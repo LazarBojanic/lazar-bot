@@ -6,10 +6,11 @@ const TOKEN_FILE = 'token.json';
 const CREDENTIALS_FILE = 'credentials.json';
 
 async function main() {
-  let credentials, client, token;
+  let credentials, token, client;
     try{
         credentials = await loadCredentials(CREDENTIALS_FILE);
         token = await loadToken(TOKEN_FILE);
+        console.log('credentials: ' + JSON.stringify(credentials));
         client = getClient(credentials, token);
     }
     catch(error){
@@ -21,20 +22,31 @@ async function main() {
             input: process.stdin,
             output: process.stdout,
         });
-        consoleInterface.question('Paste the token from the URL: ', async (newToken) => {
-            consoleInterface.close();
-            token = newToken;
-            await fs.promises.writeFile(TOKEN_FILE, JSON.stringify({ token }), 'utf8');
-            client = getClient(credentials, token);
-        });
+        token = await new Promise((resolve) => {
+            // Prompt the user to paste the token
+            consoleInterface.question('Paste the token from the URL: ', (newToken) => {
+              consoleInterface.close();
+              resolve(newToken);
+            });
+          });
+
+        await fs.promises.writeFile(TOKEN_FILE, JSON.stringify({ token }), 'utf8');
     }
-    console.log('Using cached token.');
-    client.connect().catch(console.error);
-    registerMethods(client);
+    finally{
+        console.log('Using cached token.');
+        client.connect().catch(console.error);
+        registerMethods(client);
+    }
 }
 async function loadToken(filePath){
-    const tokenJson = await fs.promises.readFile(filePath, 'utf8');
-    return JSON.parse(tokenJson).token;
+    try{
+        const tokenJson = await fs.promises.readFile(filePath, 'utf8');
+        return JSON.parse(tokenJson).token;
+    }
+    catch(error){
+        console.error('Token file not found, proceeding with authorization flow.');
+        throw error;
+    }
 }
 async function loadCredentials(filePath) {
   try {
