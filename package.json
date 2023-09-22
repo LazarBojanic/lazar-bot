@@ -1,0 +1,16 @@
+{
+  "name": "laka_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./bot.js"
+  },
+  "author": "Lazar Bojanic",
+  "license": "ISC",
+  "dependencies": {
+    "opener": "^1.5.2",
+    "tmi.js": "^1.8.5",
+    "websocket": "^1.0.34"
+  }
+}
