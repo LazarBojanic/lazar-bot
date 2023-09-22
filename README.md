@@ -1,1 +1,1 @@
-# laka_bot
+# lazar-bot
