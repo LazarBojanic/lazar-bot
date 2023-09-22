@@ -45,6 +45,7 @@ function getClient(credentials, token){
 }
 function registerMethods(client){
   client.on('message', (channel, tags, message, self) => {
+    const chatterUsername = tags.username;
     const chatMessage = message.toString().trim();
     if (self) return;
     switch (chatMessage) {
@@ -55,6 +56,9 @@ function registerMethods(client){
             console.log(JSON.stringify(wordObj))
             client.say(channel, `Current solution is: ${wordObj.word}.`);
         });
+        break;
+    case '!test':
+        client.say(channel, `Hello, ${chatterUsername}.`);
         break;
       default:
         break;
