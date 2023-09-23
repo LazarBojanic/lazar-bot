@@ -88,7 +88,7 @@ function registerMethods(client, botChannel){
                 letterStatusesEmojis = letterStatusesEmojis.concat('💡');
                 break;
               case 'G':
-                letterStatusesEmojis = letterStatusesEmojis.concat('✔️');
+                letterStatusesEmojis = letterStatusesEmojis.concat('✅');
                 break;
             }
           }
