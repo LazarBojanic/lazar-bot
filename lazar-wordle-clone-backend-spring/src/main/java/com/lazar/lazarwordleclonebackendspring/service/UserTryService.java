@@ -48,10 +48,7 @@ public class UserTryService {
     }
     public Resource getKeyboardForUser(String username) {
         List<UserTry> userTries = getUserTries(username);
-        int width = 420;
-        int height = 220;
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        Graphics2D g2d = image.createGraphics();
+           
         int keySize = 40;
         int keySpacing = 10;
         Map<String, Color> colors = Map.of(
@@ -61,9 +58,15 @@ public class UserTryService {
             "W", new Color(255, 255, 255)
         );
         int fontSize = 25;
+
+        int keysPerRow = 8;
+        int keysPerColumn = 4;
+        int width = keysPerRow * (keySize + keySpacing) + keySpacing;
+        int height = keysPerColumn * (keySize + keySpacing) + keySpacing;
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = image.createGraphics();
         Font font = new Font("SansSerif", Font.PLAIN, fontSize);
         g2d.setFont(font);
-        int keysPerRow = width / (keySize + keySpacing);
         int keysInCurrentRow = 0;
         int x = 10;
         int y = 10;
