@@ -1,5 +1,5 @@
 {
-  "name": "lazar-bot",
+  "name": "lazar-twitch-bot-nodejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
