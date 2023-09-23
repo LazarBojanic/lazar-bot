@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Builder
 @Document(collection = "sessions")
-public class UserSolution implements Serializable {
+public class UserSession implements Serializable {
     @JsonProperty("username")
     @Id
     private String username;

@@ -16,22 +16,33 @@ public class SolutionService {
 	@Autowired
 	private SolutionRepository solutionRepository;
 	@Autowired
-	private UserSolutionService userSolutionService;
+	private UserSessionService userSessionService;
 
-	public UserTryResponse checkSolution(UserTryRequest userTry) {
-		String guessedWord = userTry.getWord().toUpperCase();
-		String solutionWord = userSolutionService.getCurrentSolutionForUser(userTry.getUsername()).getWord();
+	public UserTryResponse checkSolution(UserTryRequest userTryRequest) {
+		String username = userTryRequest.getUsername();
+		String guessedWord = userTryRequest.getWord().toUpperCase();
+		String solutionWord = userSessionService.getCurrentSolutionForUser(username).getWord();
 		Word validatedWord = getValidatedWord(guessedWord, solutionWord);
+		if(guessedWord.length() < 5){
+			return new UserTryResponse(false, "solution_not_valid", validatedWord, guessedWord);
+		}
+		if(userSessionService.getStatusForUser(username).equalsIgnoreCase("game_over") || userSessionService.getStatusForUser(username).equalsIgnoreCase("solved")){
+			return new UserTryResponse(false, "game_ended", validatedWord, guessedWord);
+		}
 		if(guessedWord.equals(solutionWord)){
-			userSolutionService.decrementRemainingTriesForUser(userTry.getUsername());
-			userSolutionService.setStatusForUser(userTry.getUsername(), "solved");
+			userSessionService.decrementRemainingTriesForUser(username);
+			userSessionService.setStatusForUser(username, "solved");
 			System.out.println("Solution: " + guessedWord + ", correct.");
 			return new UserTryResponse(true, "solution_correct", validatedWord, guessedWord);
 		}
 		else {
 			if(guessService.isValidGuess(guessedWord)) {
+				userSessionService.decrementRemainingTriesForUser(username);
+				if(userSessionService.getRemainingTriesForUser(username) <= 0){
+					userSessionService.setStatusForUser(username, "game_over");
+				}
 				System.out.println("Solution: " + guessedWord + ", incorrect.");
-				return new UserTryResponse(false, "solution_incorrect", validatedWord, guessedWord);
+				return new UserTryResponse(true, "solution_incorrect", validatedWord, guessedWord);
 			}
 			else {
 				System.out.println("Solution: " + guessedWord + ", not valid.");
@@ -47,8 +58,8 @@ public class SolutionService {
 			char guessedLetter = guessedWord.charAt(i);
 			char solutionLetter = solutionWord.charAt(i);
 
-			Letter currentGuessedLetter = new Letter(i, String.valueOf(guessedLetter), LetterStatus.GREY);
-			Letter currentSolutionLetter = new Letter(i, String.valueOf(solutionLetter), LetterStatus.GREY);
+			Letter currentGuessedLetter = new Letter(i, String.valueOf(guessedLetter), LetterStatus.RED);
+			Letter currentSolutionLetter = new Letter(i, String.valueOf(solutionLetter), LetterStatus.RED);
 
 			if (guessedLetter == solutionLetter) {
 				currentGuessedLetter.setStatus(LetterStatus.GREEN);
@@ -83,4 +94,5 @@ public class SolutionService {
 	public String getRandomSolutionWord() {
 		return solutionRepository.findRandomSolution().get().getWord();
 	}
+
 }

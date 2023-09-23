@@ -43,25 +43,77 @@ function getClient(credentials, token){
     channels: [credentials.channel],
   });
 }
-function registerMethods(client){
+function registerMethods(client, botChannel){
   client.on('message', (channel, tags, message, self) => {
     const chatterUsername = tags.username;
     const chatMessage = message.toString().trim();
     if (self) return;
-    switch (chatMessage) {
-      case '!getCurrentSolution':
-        fetch('http://94.189.193.50:5003/api/solutions/getCurrent')
-        .then(res => res.json())
-        .then(wordObj => {
-            console.log(JSON.stringify(wordObj))
-            client.say(channel, `Current solution is: ${wordObj.word}.`);
-        });
-        break;
-    case '!test':
-        client.say(channel, `Hello, ${chatterUsername}.`);
-        break;
-      default:
-        break;
+    if(chatMessage == '!newGame'){
+      fetch(`http://94.189.193.50:5003/api/solutions/new?username=${chatterUsername}`)
+      .then(res => res.json())
+      .then(res => {
+          client.say(channel, `Starting new game: ${res.status}`);
+      });
+    }
+    else if(chatMessage.includes('!guess')){
+      const guessWord = chatMessage.split(' ')[1].toUpperCase();
+      const userTryRequest = {
+        username: chatterUsername,
+        word: guessWord
+      }
+      fetch(`http://94.189.193.50:5003/api/solutions/check`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userTryRequest)
+      })
+      .then(res => res.json())
+      .then(res => {
+        console.log('res: ' + JSON.stringify(res));
+        if(res.reason == 'game_ended'){
+          client.say(channel, 'Game ended. You can start a new one with !newGame');
+        }
+        else if(res.reason == 'solution_not_valid'){
+          client.say(channel, `Guess: ${guessWord}, not valid!`);
+        }
+        else{
+          let letterStatusesEmojis = '';
+          for(let i = 0; i < res.validated_word.letters.length; i++){
+            switch(res.validated_word.letters[i].status){
+              case 'R':
+                letterStatusesEmojis = letterStatusesEmojis.concat('❌');
+                break;
+              case 'Y':
+                letterStatusesEmojis = letterStatusesEmojis.concat('💡');
+                break;
+              case 'G':
+                letterStatusesEmojis = letterStatusesEmojis.concat('✔️');
+                break;
+            }
+          }
+          client.say(channel, `${guessWord}: ${letterStatusesEmojis}`);
+
+          fetch(`http://94.189.193.50:5003/api/solutions/checkGameStatus?username=${chatterUsername}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(res => res.json())
+          .then(userSessionObj => {
+            if(userSessionObj.status == 'unsolved'){
+              client.say(channel, `Remaining tries: ${userSessionObj.remaining_tries}`);
+            }
+            else if(userSessionObj.status == 'solved'){
+              client.say(channel, `You win! The word was: ${userSessionObj.word}`);
+            }
+            else if(userSessionObj.status == 'game_over'){
+              client.say(channel, `Game over, the word was: ${userSessionObj.word}`);
+            }
+          })
+        }
+      })
     }
   });
 }
@@ -94,7 +146,7 @@ async function main() {
       finally{
           console.log('Using cached token.');
           await client.connect();
-          registerMethods(client);
+          registerMethods(client, credentials.username);
       }
   }
 
