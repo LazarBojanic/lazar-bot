@@ -3,10 +3,13 @@ package com.lazar.lazarwordleclonebackendspring.service;
 import com.lazar.lazarwordleclonebackendspring.model.UserSession;
 import com.lazar.lazarwordleclonebackendspring.repository.SolutionRepository;
 import com.lazar.lazarwordleclonebackendspring.repository.UserSessionRepository;
+import com.lazar.lazarwordleclonebackendspring.repository.UserTryRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -16,6 +19,9 @@ public class UserSessionService {
     private UserSessionRepository userSessionRepository;
     @Autowired
     private SolutionRepository solutionRepository;
+    @Autowired
+    private UserTryService userTryService;
+
     public UserSession getCurrentSolutionForUser(String username){
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         return optionalUserSolution.orElseGet(() -> createNewSolutionForUser(username));
@@ -57,6 +63,7 @@ public class UserSessionService {
         return "game_over";
     }
     public UserSession createNewSolutionForUser(String username){
+        userTryService.deleteTriesForUser(username);
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         UserSession userSession;
         if(optionalUserSolution.isPresent()){

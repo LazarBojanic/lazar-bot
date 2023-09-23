@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8bc01362-f962-4f3f-88e6-e44b62b1fc5f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/guess.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/guess.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/newgame.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/newgame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-twitch-bot-nodejs/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-twitch-bot-nodejs/bot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/controller/SolutionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/controller/SolutionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/LetterStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/LetterStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/SolutionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/SolutionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/UserSessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/UserSessionService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2VoEUbmFxRDzF22XiYLF50B1Foi" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "settings.editor.selected.configurable": "preferences.editor",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="LazarWordleCloneBackendSpringApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="lazar-wordle-clone-backend-spring" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lazar.lazarwordleclonebackendspring.LazarWordleCloneBackendSpringApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8bc01362-f962-4f3f-88e6-e44b62b1fc5f" name="Changes" comment="" />
+      <created>1695494051557</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695494051557</updated>
+      <workItem from="1695494052815" duration="64000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

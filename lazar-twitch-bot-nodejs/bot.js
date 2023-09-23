@@ -49,7 +49,7 @@ function registerMethods(client, botChannel){
     const chatMessage = message.toString().trim();
     if (self) return;
     if(chatMessage == '!newGame'){
-      fetch(`http://94.189.193.50:5003/api/solutions/new?username=${chatterUsername}`)
+      fetch(`http://94.189.193.50:5003/api/game/new?username=${chatterUsername}`)
       .then(res => res.json())
       .then(res => {
           client.say(channel, `Starting new game: ${res.status}`);
@@ -61,7 +61,7 @@ function registerMethods(client, botChannel){
         username: chatterUsername,
         word: guessWord
       }
-      fetch(`http://94.189.193.50:5003/api/solutions/check`, {
+      fetch(`http://94.189.193.50:5003/api/solutions/guess`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ function registerMethods(client, botChannel){
           }
           client.say(channel, `${guessWord}: ${letterStatusesEmojis}`);
 
-          fetch(`http://94.189.193.50:5003/api/solutions/checkGameStatus?username=${chatterUsername}`, {
+          fetch(`http://94.189.193.50:5003/api/game/checkGameStatus?username=${chatterUsername}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json'

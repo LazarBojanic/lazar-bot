@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const fs = require('fs')
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -17,7 +18,7 @@ module.exports = {
 			username: username,
 			word: guessWord
 		}
-		const userTryObjRes = await fetch(`http://94.189.193.50:5003/api/solutions/check`, {
+		const userTryObjRes = await fetch(`http://94.189.193.50:5003/api/solutions/guess`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -47,7 +48,39 @@ module.exports = {
 				}
 			}
 			await interaction.reply(`${guessWord}: ${letterStatusesEmojis}`);
-			const userSessionObjRes = await fetch(`http://94.189.193.50:5003/api/solutions/checkGameStatus?username=${username}`, {
+
+			const boardImageRes = await fetch(`http://localhost:5003/api/game/getBoardForUser?username=${username}`, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'image/png'
+				}
+			})
+			const boardImageBuffer = await boardImageRes.arrayBuffer();
+			const boardImagePath = `./assets/board_${username}.png`;
+            fs.writeFile(boardImagePath, Buffer.from(boardImageBuffer), async (err) => {
+                await interaction.followUp({files: [{
+					attachment: boardImagePath,
+					name: `board_${username}.png`
+				  }]})
+            });
+
+			const keyboardImageRes = await fetch(`http://localhost:5003/api/game/getKeyboardForUser?username=${username}`, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'image/png'
+				}
+			})
+			const keyboardImageBuffer = await keyboardImageRes.arrayBuffer();
+			const keyboardImagePath = `./assets/keyboard_${username}.png`;
+            fs.writeFile(keyboardImagePath, Buffer.from(keyboardImageBuffer), async (err) => {
+                await interaction.followUp({files: [{
+					attachment: keyboardImagePath,
+					name: `keyboard_${username}.png`
+				  }]})
+            });
+
+
+			const userSessionObjRes = await fetch(`http://94.189.193.50:5003/api/game/checkGameStatus?username=${username}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'

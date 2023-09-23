@@ -7,7 +7,7 @@ module.exports = {
 	category: 'basic',
 	async execute(interaction) {
 		const username = interaction.user.username;
-		const newGameRes = await fetch(`http://94.189.193.50:5003/api/solutions/new?username=${username}`)
+		const newGameRes = await fetch(`http://94.189.193.50:5003/api/game/new?username=${username}`)
 		const newGameObj = await newGameRes.json();
 		await interaction.reply(`Starting new game: ${newGameObj.status}`);
 	},

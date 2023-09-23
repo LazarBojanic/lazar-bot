@@ -46,7 +46,6 @@ async function deployCommands(credentials, rest, commandsPathString){
         console.log(`Successfully reloaded ${data.length} application (/) commands.`);
     } 
     catch (error) {
-        // And of course, make sure you catch and log any errors!
         console.error(error);
     }
 }

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LazarWordleCloneBackendSpringApplication<lazar-wordle-clone-backend-spring>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.lazar.lazarwordleclonebackendspring.LazarWordleCloneBackendSpringApplication",
+            "projectName": "lazar-wordle-clone-backend-spring",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

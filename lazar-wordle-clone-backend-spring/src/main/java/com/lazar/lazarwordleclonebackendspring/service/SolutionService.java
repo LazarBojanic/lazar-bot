@@ -9,6 +9,7 @@ import com.lazar.lazarwordleclonebackendspring.model.*;
 import com.lazar.lazarwordleclonebackendspring.repository.SolutionRepository;
 import com.lazar.lazarwordleclonebackendspring.request.UserTryRequest;
 import com.lazar.lazarwordleclonebackendspring.response.UserTryResponse;
+import com.util.Util;
 @Service
 public class SolutionService {
 	@Autowired
@@ -17,8 +18,10 @@ public class SolutionService {
 	private SolutionRepository solutionRepository;
 	@Autowired
 	private UserSessionService userSessionService;
+	@Autowired
+	private UserTryService userTryService;
 
-	public UserTryResponse checkSolution(UserTryRequest userTryRequest) {
+	public UserTryResponse guessSolution(UserTryRequest userTryRequest) {
 		String username = userTryRequest.getUsername();
 		String guessedWord = userTryRequest.getWord().toUpperCase();
 		String solutionWord = userSessionService.getCurrentSolutionForUser(username).getWord();
@@ -30,6 +33,7 @@ public class SolutionService {
 			return new UserTryResponse(false, "game_ended", validatedWord, guessedWord);
 		}
 		if(guessedWord.equals(solutionWord)){
+			userTryService.addTryForUser(username, validatedWord);
 			userSessionService.decrementRemainingTriesForUser(username);
 			userSessionService.setStatusForUser(username, "solved");
 			System.out.println("Solution: " + guessedWord + ", correct.");
@@ -37,6 +41,7 @@ public class SolutionService {
 		}
 		else {
 			if(guessService.isValidGuess(guessedWord)) {
+				userTryService.addTryForUser(username, validatedWord);
 				userSessionService.decrementRemainingTriesForUser(username);
 				if(userSessionService.getRemainingTriesForUser(username) <= 0){
 					userSessionService.setStatusForUser(username, "game_over");
@@ -58,16 +63,16 @@ public class SolutionService {
 			char guessedLetter = guessedWord.charAt(i);
 			char solutionLetter = solutionWord.charAt(i);
 
-			Letter currentGuessedLetter = new Letter(i, String.valueOf(guessedLetter), LetterStatus.RED);
-			Letter currentSolutionLetter = new Letter(i, String.valueOf(solutionLetter), LetterStatus.RED);
+			Letter currentGuessedLetter = new Letter(i, String.valueOf(guessedLetter), Util.RED);
+			Letter currentSolutionLetter = new Letter(i, String.valueOf(solutionLetter), Util.RED);
 
 			if (guessedLetter == solutionLetter) {
-				currentGuessedLetter.setStatus(LetterStatus.GREEN);
+				currentGuessedLetter.setStatus(Util.GREEN);
 			} else {
 				count.put(solutionLetter, count.getOrDefault(solutionLetter, 0) + 1);
 			}
 
-			letters.add(currentGuessedLetter); // Add every letter, including GREY ones.
+			letters.add(currentGuessedLetter);
 		}
 
 		for (int i = 0; i < guessedWord.length(); i++) {
@@ -79,13 +84,11 @@ public class SolutionService {
 			}
 
 			count.put(guessedLetter, count.get(guessedLetter) - 1);
-			letters.get(i).setStatus(LetterStatus.YELLOW);
+			letters.get(i).setStatus(Util.YELLOW);
 		}
-
-		// Sort the letters list by position in ascending order
 		letters.sort(Comparator.comparingInt(Letter::getPosition));
 
-		return new Word(letters, solutionWord);
+		return new Word(letters, guessedWord);
 	}
 	public Solution getSolutionByWord(String word) {
 		return solutionRepository.findByWord(word).get();
