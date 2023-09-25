@@ -1,28 +1,24 @@
 package com.lazar.lazarwordleclonebackendspring.model;
 
+import org.hibernate.validator.constraints.Length;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@ToString
-@Entity
-@Table(name="guess")
+@Document(collection = "guesses")
 public class Guess{
-	@Id
+	@MongoId
 	@JsonProperty("id")
 	@NotNull
-	private Long id;
+	private Long _id;
 	@NotNull
-	@Column(name="word", length = 5)
+	@Length(max = 5)
 	@JsonProperty("word")
 	private String word;
 }

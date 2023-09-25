@@ -80,22 +80,62 @@ module.exports = {
             });
 
 
-			const userSessionObjRes = await fetch(`http://94.189.193.50:5003/api/game/checkGameStatus?username=${username}`, {
+			const userSessionRes = await fetch(`http://94.189.193.50:5003/api/game/checkGameStatus?username=${username}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
 				}
 			})
-			const userSessionObj = await userSessionObjRes.json();
+			const userSessionObj = await userSessionRes.json();
 			if(userSessionObj.status == 'unsolved'){
 				await interaction.followUp(`Remaining tries: ${userSessionObj.remaining_tries}`);
 			}
 			else if(userSessionObj.status == 'solved'){
 				await interaction.followUp(`You win! The word was: ${userSessionObj.word}`);
+
+				const dictionaryWordRes = await fetch(`http://94.189.193.50:5003/api/dictionaryWord/getSimpleByWord?word=${userSessionObj.word}`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				const dictionaryWordObj = await dictionaryWordRes.json();
+				let dictionaryWordFormattedString = `Word: ${dictionaryWordObj.word}\n`;
+				for(let i = 0; i < dictionaryWordObj.meanings.length(); i++){
+					const meaning = dictionaryWordObj.meanings[i];
+					dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\tPart of Speech: ${meaning.part_of_speech}\n`)
+					for(let j = 0; j < meaning.definitions.length(); i++){
+						const definition = meaning.definitions[i];
+						dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\t\tDefinition: ${definition}\n`)
+					}
+					dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\n`)
+				}
+				await interaction.followUp(dictionaryWordFormattedString);
+
 			}
 			else if(userSessionObj.status == 'game_over'){
 				await interaction.followUp(`Game over, the word was: ${userSessionObj.word}`);
+				const dictionaryWordRes = await fetch(`http://94.189.193.50:5003/api/dictionaryWord/getSimpleByWord?word=${userSessionObj.word}`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				const dictionaryWordObj = await dictionaryWordRes.json();
+				let dictionaryWordFormattedString = `Word: ${dictionaryWordObj.word}\n`;
+				for(let i = 0; i < dictionaryWordObj.meanings.length; i++){
+					const meaning = dictionaryWordObj.meanings[i];
+					dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\tPart of Speech: ${meaning.part_of_speech}\n`)
+					for(let j = 0; j < meaning.definitions.length; j++){
+						const definition = meaning.definitions[j];
+						dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\t\tDefinition: ${definition}\n`)
+					}
+					dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\n`)
+				}
+				await interaction.followUp(dictionaryWordFormattedString);
+
 			}
+
 		}
 	},
 };

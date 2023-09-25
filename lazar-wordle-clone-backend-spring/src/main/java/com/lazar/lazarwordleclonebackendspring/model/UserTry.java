@@ -11,7 +11,6 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Document(collection = "user_tries")
 public class UserTry implements Serializable{
     @JsonProperty("username")

@@ -12,7 +12,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Document(collection = "user_sessions")
 public class UserSession implements Serializable {
     @JsonProperty("username")
