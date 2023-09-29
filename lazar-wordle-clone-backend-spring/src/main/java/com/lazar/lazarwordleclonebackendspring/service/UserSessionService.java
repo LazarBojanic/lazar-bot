@@ -96,6 +96,9 @@ public class UserSessionService {
         userSessionRepository.save(userSession);
         return userSession;
     }
+    public UserSession getSolutionForUser(String username){
+       return userSessionRepository.findByUsername(username).get();
+    }
     public UserSession checkGameStatus(String username){
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         UserSession userSession;
