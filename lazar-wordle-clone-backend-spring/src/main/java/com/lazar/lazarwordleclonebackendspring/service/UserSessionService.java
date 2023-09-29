@@ -96,14 +96,11 @@ public class UserSessionService {
         userSessionRepository.save(userSession);
         return userSession;
     }
-    public UserSession getSolutionForUser(String username){
-       return userSessionRepository.findByUsername(username).get();
-    }
     public UserSession checkGameStatus(String username){
-        Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
+        Optional<UserSession> optionalUserSession = userSessionRepository.findByUsername(username);
         UserSession userSession;
-        if(optionalUserSolution.isPresent()){
-            userSession = optionalUserSolution.get();
+        if(optionalUserSession.isPresent()){
+            userSession = optionalUserSession.get();
             return userSession;
         }
         else{
