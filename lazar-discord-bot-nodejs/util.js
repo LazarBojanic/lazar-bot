@@ -12,7 +12,7 @@ module.exports = {
 			const chunk = message.substring(0, this.MAX_MESSAGE_LENGTH);
 			message = message.substring(this.MAX_MESSAGE_LENGTH);
 	
-			await interaction.followUp(chunk);
+			await interaction.followUp({content: chunk, ephemeral: true});
 		}
 	},
 };

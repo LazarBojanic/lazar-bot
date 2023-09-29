@@ -29,10 +29,10 @@ module.exports = {
 		})
 		const userTryObj = await userTryObjRes.json();
 		if(userTryObj.reason == 'game_ended'){
-			await interaction.reply('Game ended. You can start a new one with /newgame');
+			await interaction.reply({content: 'Game ended. You can start a new one with /newgame', ephemeral: true});
 		}
 		else if(userTryObj.reason == 'solution_not_valid'){
-			await interaction.reply(`Guess: ${guessWord}, not valid!`);
+			await interaction.reply({content: `Guess: ${guessWord}, not valid!`, ephemeral: true});
 		}
 		else{
 			let letterStatusesEmojis = '';
@@ -49,7 +49,7 @@ module.exports = {
 					break;
 				}
 			}
-			await interaction.reply(`${guessWord}: ${letterStatusesEmojis}`);
+			await interaction.reply({content: `${guessWord}: ${letterStatusesEmojis}`, ephemeral: true});
 
 			const boardImageRes = await fetch(`http://localhost:5003/api/game/getBoardForUser?username=${username}`, {
 				method: 'GET',
@@ -63,7 +63,7 @@ module.exports = {
                 await interaction.followUp({files: [{
 					attachment: boardImagePath,
 					name: `board_${username}.png`
-				  }]})
+				  }], ephemeral: true})
             });
 
 			const keyboardImageRes = await fetch(`http://localhost:5003/api/game/getKeyboardForUser?username=${username}`, {
@@ -78,7 +78,7 @@ module.exports = {
                 await interaction.followUp({files: [{
 					attachment: keyboardImagePath,
 					name: `keyboard_${username}.png`
-				  }]})
+				  }], ephemeral: true})
             });
 
 
@@ -90,11 +90,10 @@ module.exports = {
 			})
 			const userSessionObj = await userSessionRes.json();
 			if(userSessionObj.status == 'unsolved'){
-				await interaction.followUp(`Remaining tries: ${userSessionObj.remaining_tries}`);
+				await interaction.followUp({content: `Remaining tries: ${userSessionObj.remaining_tries}`, ephemeral: true});
 			}
 			else if(userSessionObj.status == 'solved'){
-				await interaction.followUp(`You win! The word was: ${userSessionObj.word}`);
-
+				await interaction.followUp({content: `You win! The word was: ${userSessionObj.word}`, ephemeral: true});
 				const dictionaryWordRes = await fetch(`http://94.189.193.50:5003/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
 					method: 'GET',
 					headers: {
@@ -113,8 +112,7 @@ module.exports = {
 
 			}
 			else if(userSessionObj.status == 'game_over'){
-				await interaction.followUp(`Game over, the word was: ${userSessionObj.word}`);
-
+				await interaction.followUp({content: `Game over, the word was: ${userSessionObj.word}`, ephemeral: true});
 				const dictionaryWordRes = await fetch(`http://94.189.193.50:5003/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
 					method: 'GET',
 					headers: {
