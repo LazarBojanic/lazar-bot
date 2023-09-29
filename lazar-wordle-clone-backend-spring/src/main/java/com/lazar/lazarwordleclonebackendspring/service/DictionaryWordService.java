@@ -72,5 +72,32 @@ public class DictionaryWordService {
             return new ByteArrayResource(new byte[0]);
         }
     }
-    
+    public List<SimpleDictionaryWord> getAllSimpleDictionaryWords(){
+        List<DictionaryWord> dictionaryWordList = dictionaryWordRepository.findAll();
+        List<SimpleDictionaryWord> simpleDictionaryWordList = new ArrayList<>();
+        for(DictionaryWord dictionaryWord : dictionaryWordList){
+            simpleDictionaryWordList.add(new SimpleDictionaryWord(dictionaryWord));
+        }
+        return simpleDictionaryWordList;
+    }
+    public SimpleDictionaryWord getLongestSimpleDictionaryWord(){
+        List<SimpleDictionaryWord> simpleDictionaryWordList = getAllSimpleDictionaryWords();
+        int max = 0;
+        SimpleDictionaryWord simpleDictionaryWordWithMaxLength = new SimpleDictionaryWord();
+        for(SimpleDictionaryWord simpleDictionaryWord : simpleDictionaryWordList){
+            int currentLength = 0;
+            currentLength += simpleDictionaryWord.getWord().length();
+            for(SimpleMeaning simpleMeaning : simpleDictionaryWord.getMeanings()){
+                currentLength += simpleMeaning.getPart_of_speech().length();
+                for(String definition : simpleMeaning.getDefinitions()){
+                    currentLength += definition.length();
+                }
+            }
+            if(currentLength >= max){
+                max = currentLength;
+                simpleDictionaryWordWithMaxLength = simpleDictionaryWord;
+            }
+        }
+        return simpleDictionaryWordWithMaxLength;
+    }
 }

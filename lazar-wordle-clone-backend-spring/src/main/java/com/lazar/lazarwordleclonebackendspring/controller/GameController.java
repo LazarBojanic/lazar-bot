@@ -57,6 +57,16 @@ public class GameController {
 			return ResponseEntity.internalServerError().body(new NewSolutionResponse("error"));
 		}
 	}
+    @GetMapping("/set")
+	public ResponseEntity<NewSolutionResponse> setSolution(@RequestParam String username, @RequestParam String word) {
+		UserSession userSession = userSessionService.setSolutionForUser(username, word);
+		if(userSession != null){
+			return ResponseEntity.ok(new NewSolutionResponse("success"));
+		}
+		else{
+			return ResponseEntity.internalServerError().body(new NewSolutionResponse("error"));
+		}
+	}
     @GetMapping("/getKeyboardForUser")
 	public ResponseEntity<Resource> getKeyboardForUser(@RequestParam String username) {
         Resource keyboardImage = userTryService.getKeyboardForUser(username);

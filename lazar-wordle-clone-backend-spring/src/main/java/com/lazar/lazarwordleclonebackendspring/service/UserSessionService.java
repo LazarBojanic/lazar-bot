@@ -79,6 +79,23 @@ public class UserSessionService {
         userSessionRepository.save(userSession);
         return userSession;
     }
+    public UserSession setSolutionForUser(String username, String word){
+        userTryService.deleteTriesForUser(username);
+        Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
+        UserSession userSession;
+        if(optionalUserSolution.isPresent()){
+            userSession = optionalUserSolution.get();
+        }
+        else{
+            userSession = new UserSession();
+            userSession.setUsername(username);
+        }
+        userSession.setWord(solutionRepository.findByWord(word.toUpperCase()).get().getWord());
+        userSession.setStatus("unsolved");
+        userSession.setRemaining_tries(6);
+        userSessionRepository.save(userSession);
+        return userSession;
+    }
     public UserSession checkGameStatus(String username){
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         UserSession userSession;

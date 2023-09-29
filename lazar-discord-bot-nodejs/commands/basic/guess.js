@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fs = require('fs')
-
+const util = require('../../util')
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('guess')
@@ -10,6 +10,8 @@ module.exports = {
 				.setDescription('Word guess.')
 				.setRequired(true)),
 	category: 'basic',
+	
+
 	async execute(interaction) {
 		const username = interaction.user.username;
 		const guessWord = interaction.options.getString('guessword', true).toUpperCase();
@@ -93,7 +95,7 @@ module.exports = {
 			else if(userSessionObj.status == 'solved'){
 				await interaction.followUp(`You win! The word was: ${userSessionObj.word}`);
 
-				const dictionaryWordRes = await fetch(`http://94.189.193.50:5003/api/dictionaryWord/getSimpleByWord?word=${userSessionObj.word}`, {
+				const dictionaryWordRes = await fetch(`http://94.189.193.50:5003/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json'
@@ -107,13 +109,13 @@ module.exports = {
 						dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\t\tDefinition: ${definition}\n`)
 					})		
 				})
-				await interaction.followUp(dictionaryWordFormattedString);
+				await util.sendLargeMessage(interaction, dictionaryWordFormattedString);
 
 			}
 			else if(userSessionObj.status == 'game_over'){
 				await interaction.followUp(`Game over, the word was: ${userSessionObj.word}`);
 
-				const dictionaryWordRes = await fetch(`http://94.189.193.50:5003/api/dictionaryWord/getSimpleByWord?word=${userSessionObj.word}`, {
+				const dictionaryWordRes = await fetch(`http://94.189.193.50:5003/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json'
@@ -127,7 +129,7 @@ module.exports = {
 						dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\t\tDefinition: ${definition}\n`)
 					})		
 				})
-				await interaction.followUp(dictionaryWordFormattedString);
+				await util.sendLargeMessage(interaction, dictionaryWordFormattedString);
 			}
 
 		}

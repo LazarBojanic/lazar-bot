@@ -21,7 +21,7 @@ import com.lazar.lazarwordleclonebackendspring.model.SimpleDictionaryWord;
 import com.lazar.lazarwordleclonebackendspring.service.DictionaryWordService;
 
 @RestController
-@RequestMapping("/dictionaryWord")
+@RequestMapping("/dictionaryWords")
 public class DictionaryWordController {
 	@Autowired
 	private DictionaryWordService dictionaryWordService;
@@ -51,5 +51,9 @@ public class DictionaryWordController {
             e.printStackTrace();
             return ResponseEntity.notFound().build();
         }
+	}
+    @GetMapping("/getLongestSimple")
+	public ResponseEntity<SimpleDictionaryWord> getLongestSimpleDictionaryWord() {
+		return ResponseEntity.ok(dictionaryWordService.getLongestSimpleDictionaryWord());
 	}
 }
