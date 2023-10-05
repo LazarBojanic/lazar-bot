@@ -9,7 +9,7 @@ import com.lazar.lazarwordleclonebackendspring.model.*;
 import com.lazar.lazarwordleclonebackendspring.repository.SolutionRepository;
 import com.lazar.lazarwordleclonebackendspring.request.UserTryRequest;
 import com.lazar.lazarwordleclonebackendspring.response.UserTryResponse;
-import com.util.Util;
+import com.lazar.lazarwordleclonebackendspring.util.Util;
 @Service
 public class SolutionService {
 	@Autowired
@@ -24,11 +24,12 @@ public class SolutionService {
 	public UserTryResponse guessSolution(UserTryRequest userTryRequest) {
 		String username = userTryRequest.getUsername();
 		String guessedWord = userTryRequest.getWord().toUpperCase();
+		if(guessedWord.length() != 5){
+			return new UserTryResponse(false, "solution_not_valid", new Word(), guessedWord);
+		}
 		String solutionWord = userSessionService.getCurrentSolutionForUser(username).getWord();
 		Word validatedWord = getValidatedWord(guessedWord, solutionWord);
-		if(guessedWord.length() < 5){
-			return new UserTryResponse(false, "solution_not_valid", validatedWord, guessedWord);
-		}
+
 		if(userSessionService.getStatusForUser(username).equalsIgnoreCase("game_over") || userSessionService.getStatusForUser(username).equalsIgnoreCase("solved")){
 			return new UserTryResponse(false, "game_ended", validatedWord, guessedWord);
 		}

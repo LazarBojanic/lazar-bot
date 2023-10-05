@@ -1,11 +1,8 @@
 package com.lazar.lazarwordleclonebackendspring.service;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -17,10 +14,8 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +24,7 @@ import com.lazar.lazarwordleclonebackendspring.model.LetterStatus;
 import com.lazar.lazarwordleclonebackendspring.model.UserTry;
 import com.lazar.lazarwordleclonebackendspring.model.Word;
 import com.lazar.lazarwordleclonebackendspring.repository.UserTryRepository;
-import com.util.Util;
+import com.lazar.lazarwordleclonebackendspring.util.Util;
 
 @Service
 public class UserTryService {

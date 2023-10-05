@@ -1,4 +1,4 @@
-package com.util;
+package com.lazar.lazarwordleclonebackendspring.util;
 
 public class Util {
     public static String RED = "R";
