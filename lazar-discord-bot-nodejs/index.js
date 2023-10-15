@@ -1,30 +1,17 @@
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
-const CREDENTIALS_PATH_STRING = "credentials.json";
-const COMMANDS_PATH_STRING = "commands";
-const EVENTS_PATH_STRING = "events";
-async function loadCredentials(credentialsPathString) {
-    try {
-      const credentialsJson = await fs.promises.readFile(credentialsPathString, 'utf8');
-      const credentials = JSON.parse(credentialsJson);
-      return credentials;
-    } catch (error) {
-      console.error('Error:', error);
-      throw error;
-    }
-  }
+require('dotenv').config()
 
-async function main(){
-    const credentials = await loadCredentials(CREDENTIALS_PATH_STRING);
-    const client = getClient(credentials);
-    registerCommands(client, COMMANDS_PATH_STRING);
-    registerEvents(client, EVENTS_PATH_STRING);
+function main(){
+    const client = getClient(process.env.TOKEN);
+    registerCommands(client, process.env.COMMANDS_PATH);
+    registerEvents(client, process.env.EVENTS_PATH);
 }
-function getClient(credentials){
+function getClient(token){
     const client = new Client({ intents: [GatewayIntentBits.Guilds] });
     
-    client.login(credentials.token);
+    client.login(token);
     return client;
 }
 function registerCommands(client, commandsPathString){

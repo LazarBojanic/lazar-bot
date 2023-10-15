@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bc01362-f962-4f3f-88e6-e44b62b1fc5f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/guess.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/guess.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/newgame.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/newgame.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-twitch-bot-nodejs/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-twitch-bot-nodejs/bot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/controller/SolutionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/controller/SolutionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/LetterStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/LetterStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/SolutionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/SolutionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/UserSessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/UserSessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/assets/board_dumbe01.png" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/assets/board_dumbe01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/assets/keyboard_dumbe01.png" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/assets/keyboard_dumbe01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,20 +17,34 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="jxbpfvic" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2VoEUbmFxRDzF22XiYLF50B1Foi" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/bojan/JavaProjects/lakamod",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "preferences.editor",
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
@@ -63,6 +69,9 @@
       <option name="presentableId" value="Default" />
       <updated>1695494051557</updated>
       <workItem from="1695494052815" duration="64000" />
+      <workItem from="1696519695779" duration="778000" />
+      <workItem from="1696588028639" duration="258000" />
+      <workItem from="1696827198808" duration="39000" />
     </task>
     <servers />
   </component>

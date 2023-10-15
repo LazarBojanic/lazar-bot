@@ -6,9 +6,15 @@ module.exports = {
 		.setDescription('Starts a new wordle game.'),
 	category: 'basic',
 	async execute(interaction) {
-		const username = interaction.user.username;
-		const newGameRes = await fetch(`http://94.189.193.50:5003/api/game/new?username=${username}`)
-		const newGameObj = await newGameRes.json();
-		await interaction.reply({content: `Starting new game: ${newGameObj.status}`, ephemeral: true});
+		try{
+			const username = interaction.user.username;
+			const newGameRes = await fetch(`https://lazar-wordle-clone-backend-spring.onrender.com/api/game/new?username=${username}`)
+			const newGameObj = await newGameRes.json();
+			await interaction.reply({content: `Starting new game: ${newGameObj.status}`, ephemeral: true});
+		}
+		catch(error){
+			console.error(error);
+			await interaction.reply({content: `Error: ${error}`, ephemeral: true});
+		}
 	},
 };
