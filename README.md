@@ -1,5 +1,5 @@
 # lazar-bot
 
-A discord/twitch bot that allows the user to play the game of wordle.
+A Discord/Twitch bot, that allows users to play the game of Wordle.
 
 ![wordle](./wordle.png)
