@@ -1,6 +1,8 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fs = require('fs')
 const util = require('../../util')
+require('dotenv').config()
+const ip = process.env.SERVER_IP
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('guess')
@@ -21,7 +23,7 @@ module.exports = {
 				username: username,
 				word: guessWord
 			}
-			const userTryObjRes = await fetch(`https://lazar-wordle-clone-backend-spring.onrender.com/api/solutions/guess`, {
+			const userTryObjRes = await fetch(`${ip}/api/solutions/guess`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -52,7 +54,7 @@ module.exports = {
 				}
 				await interaction.reply({content: `${guessWord}: ${letterStatusesEmojis}`, ephemeral: true});
 
-				const boardImageRes = await fetch(`https://lazar-wordle-clone-backend-spring.onrender.com/api/game/getBoardForUser?username=${username}`, {
+				const boardImageRes = await fetch(`${ip}/api/game/getBoardForUser?username=${username}`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'image/png'
@@ -69,7 +71,7 @@ module.exports = {
 					name: `board_${username}.png`
 				}], ephemeral: true})
 
-				const keyboardImageRes = await fetch(`https://lazar-wordle-clone-backend-spring.onrender.com/api/game/getKeyboardForUser?username=${username}`, {
+				const keyboardImageRes = await fetch(`${ip}/api/game/getKeyboardForUser?username=${username}`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'image/png'
@@ -86,7 +88,7 @@ module.exports = {
 					name: `keyboard_${username}.png`
 				}], ephemeral: true})
 
-				const userSessionRes = await fetch(`https://lazar-wordle-clone-backend-spring.onrender.com/api/game/checkGameStatus?username=${username}`, {
+				const userSessionRes = await fetch(`${ip}/api/game/checkGameStatus?username=${username}`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json'
@@ -98,7 +100,7 @@ module.exports = {
 				}
 				else if(userSessionObj.status == 'solved'){
 					await interaction.followUp({content: `You win! The word was: ${userSessionObj.word}`, ephemeral: true});
-					const dictionaryWordRes = await fetch(`https://lazar-wordle-clone-backend-spring.onrender.com/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
+					const dictionaryWordRes = await fetch(`${ip}/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
 						method: 'GET',
 						headers: {
 							'Content-Type': 'application/json'
@@ -117,7 +119,7 @@ module.exports = {
 				}
 				else if(userSessionObj.status == 'game_over'){
 					await interaction.followUp({content: `Game over, the word was: ${userSessionObj.word}`, ephemeral: true});
-					const dictionaryWordRes = await fetch(`https://lazar-wordle-clone-backend-spring.onrender.com/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
+					const dictionaryWordRes = await fetch(`${ip}/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
 						method: 'GET',
 						headers: {
 							'Content-Type': 'application/json'

@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
-
+require('dotenv').config()
+const ip = process.env.SERVER_IP
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('newgame')
@@ -8,7 +9,7 @@ module.exports = {
 	async execute(interaction) {
 		try{
 			const username = interaction.user.username;
-			const newGameRes = await fetch(`https://lazar-wordle-clone-backend-spring.onrender.com/api/game/new?username=${username}`)
+			const newGameRes = await fetch(`${ip}/api/game/new?username=${username}`)
 			const newGameObj = await newGameRes.json();
 			await interaction.reply({content: `Starting new game: ${newGameObj.status}`, ephemeral: true});
 		}
