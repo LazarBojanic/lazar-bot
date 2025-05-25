@@ -4,13 +4,17 @@ const path = require('path');
 require('dotenv').config()
 
 function main(){
-    const client = getClient(process.env.TOKEN);
+    const client = getClient();
     registerCommands(client, process.env.COMMANDS_PATH);
     registerEvents(client, process.env.EVENTS_PATH);
+    client.login(process.env.TOKEN);
 }
-function getClient(token){
+function getClient(){
     const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-    
+    return client;
+}
+function getClientAndLogin(token){
+    const client = new Client({ intents: [GatewayIntentBits.Guilds] });
     client.login(token);
     return client;
 }
@@ -27,7 +31,8 @@ function registerCommands(client, commandsPathString){
             const command = require(filePath);
             if ('data' in command && 'execute' in command) {
                 client.commands.set(command.data.name, command);
-            } else {
+            } 
+            else {
                 console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
             }
         }

@@ -5,8 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bc01362-f962-4f3f-88e6-e44b62b1fc5f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.node-version" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.node-version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.nvmrc" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.nvmrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/guess.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/guess.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/newgame.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/newgame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/reload.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/reload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/deploy-commands.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/deploy-commands.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/events/interactionCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/events/interactionCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/runner/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/runner/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +33,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;LazarBojanic&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/LazarBojanic/lazar-bot.git&quot;,
+    &quot;accountId&quot;: &quot;886b1727-daa4-4447-b24e-b954269c5150&quot;
+  }
+}</component>
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
   </component>
@@ -27,43 +56,147 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2VoEUbmFxRDzF22XiYLF50B1Foi" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Application.Main.executor": "Run",
+    "Docker.dumbe01/lazar-wordle-clone-backend-spring.executor": "Run",
+    "Docker.lazar-wordle-clone-backend-spring.executor": "Run",
+    "Maven.Maven Clean Install.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.LazarWordleCloneBackendSpringApplication.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/bojan/JavaProjects/lakamod",
+    "last_opened_file_path": "C:/Users/bojan/WebProjects/lazar-bot/lazar-wordle-clone-backend-spring",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.editor",
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="LazarWordleCloneBackendSpringApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bojan\WebProjects\lazar-bot\lazar-wordle-clone-backend-spring" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Docker.dumbe01/lazar-wordle-clone-backend-spring">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="envFilePaths">
+        <option value="$PROJECT_DIR$/src/main/resources/.env" />
+      </option>
+      <option name="MAIN_CLASS_NAME" value="com.lazar.lazarwordleclonebackendspring.LazarWordleCloneBackendSpringApplication" />
       <module name="lazar-wordle-clone-backend-spring" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.lazar.lazarwordleclonebackendspring.LazarWordleCloneBackendSpringApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Maven Clean Install" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="install" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="dumbe01/lazar-wordle-clone-backend-spring" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="dumbe01/lazar-wordle-clone-backend-spring" />
+          <option name="attachToContainerNeeded" value="true" />
+          <option name="containerName" value="lazar-wordle-clone-backend-spring" />
+          <option name="envVars">
+            <list>
+              <DockerEnvVarImpl>
+                <option name="name" value="PORT" />
+                <option name="value" value="5003" />
+              </DockerEnvVarImpl>
+              <DockerEnvVarImpl>
+                <option name="name" value="SERVER_PORT" />
+                <option name="value" value="5003" />
+              </DockerEnvVarImpl>
+              <DockerEnvVarImpl>
+                <option name="name" value="SERVER_SERVLET_CONTEXT_PATH" />
+                <option name="value" value="/api" />
+              </DockerEnvVarImpl>
+              <DockerEnvVarImpl>
+                <option name="name" value="SPRING_DATA_MONGODB_DATABASE" />
+                <option name="value" value="wordle" />
+              </DockerEnvVarImpl>
+              <DockerEnvVarImpl>
+                <option name="name" value="SPRING_DATA_MONGODB_SSL_ENABLED" />
+                <option name="value" value="true" />
+              </DockerEnvVarImpl>
+              <DockerEnvVarImpl>
+                <option name="name" value="SPRING_DATA_MONGODB_URI" />
+                <option name="value" value="mongodb+srv://dumbe01:pMLFHYEeBNOCcK5i@cluster0.v3cpyfu.mongodb.net/?retryWrites=true&amp;w=majority&amp;ssl=true" />
+              </DockerEnvVarImpl>
+              <DockerEnvVarImpl>
+                <option name="name" value="SPRING_OUTPUT_ANSI_ENABLED" />
+                <option name="value" value="ALWAYS" />
+              </DockerEnvVarImpl>
+              <DockerEnvVarImpl>
+                <option name="name" value="SPRING_PROFILES_ACTIVE" />
+                <option name="value" value="docker" />
+              </DockerEnvVarImpl>
+            </list>
+          </option>
+          <option name="publishAllPorts" value="true" />
+          <option name="showCommandPreview" value="true" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Docker.dumbe01/lazar-wordle-clone-backend-spring" />
+      <item itemvalue="Maven.Maven Clean Install" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

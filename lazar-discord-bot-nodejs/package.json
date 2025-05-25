@@ -4,15 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node deploy-commands.js && nodemon index.js"
+    "dev": "node deploy-commands.js && nodemon index.js",
+    "start": "node deploy-commands.js && node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.13.0",
-    "dotenv": "^16.3.1"
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
-    "eslint": "^8.50.0"
+    "@eslint/js": "^9.27.0",
+    "eslint": "^9.27.0",
+    "globals": "^16.1.0"
   }
 }
+
+

@@ -8,35 +8,40 @@ async function main(){
     await deployCommands(process.env.CLIENT_ID, process.env.GUILD_ID, rest, process.env.COMMANDS_PATH);
 }
 
-async function deployCommands(client_id, guild_id, rest, commandsPathString){
-    const commands = [];
-    const foldersPath = path.join(__dirname, commandsPathString);
-    const commandFolders = fs.readdirSync(foldersPath);
-    for (const folder of commandFolders) {
-        const commandsPath = path.join(foldersPath, folder);
-        const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-        for (const file of commandFiles) {
-            const filePath = path.join(commandsPath, file);
-            const command = require(filePath);
-            if ('data' in command && 'execute' in command) {
-                commands.push(command.data.toJSON());
-            } 
-            else {
-                console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+async function deployCommands(clientID, guildID, rest, commandsPathString){
+    try{
+        const commands = [];
+        // Grab all the command folders from the commands directory you created earlier
+        const foldersPath = path.join(__dirname, commandsPathString);
+        const commandFolders = fs.readdirSync(foldersPath);
+
+        for (const folder of commandFolders) {
+            // Grab all the command files from the commands directory you created earlier
+            const commandsPath = path.join(foldersPath, folder);
+            const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+            // Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
+            for (const file of commandFiles) {
+                const filePath = path.join(commandsPath, file);
+                const command = require(filePath);
+                if ('data' in command && 'execute' in command) {
+                    commands.push(command.data.toJSON());
+                } else {
+                    console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+                }
             }
         }
-    }
-    try {
         console.log(`Started refreshing ${commands.length} application (/) commands.`);
-            const data = await rest.put(
-            Routes.applicationCommands(client_id, guild_id),
+
+        // The put method is used to fully refresh all commands in the guild with the current set
+        const data = await rest.put(
+            Routes.applicationGuildCommands(clientID, guildID),
             { body: commands },
         );
 
         console.log(`Successfully reloaded ${data.length} application (/) commands.`);
-    } 
-    catch (error) {
-        console.error(error);
+    }
+    catch(e){
+        console.error(e);
     }
 }
 

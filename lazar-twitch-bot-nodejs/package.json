@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bot.js"
+    "dev": "nodemon ./bot.js",
+    "start": "node ./bot.js"
   },
   "author": "Lazar Bojanic",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.5.0",
     "opener": "^1.5.2",
     "tmi.js": "^1.8.5",
     "websocket": "^1.0.34"

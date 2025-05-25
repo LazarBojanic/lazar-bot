@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, MessageFlags } = require('discord.js');
 const fs = require('fs')
 const util = require('../../util')
 require('dotenv').config()
@@ -32,10 +32,10 @@ module.exports = {
 			})
 			const userTryObj = await userTryObjRes.json();
 			if(userTryObj.reason == 'game_ended'){
-				await interaction.reply({content: 'Game ended. You can start a new one with /newgame', ephemeral: true});
+				await interaction.reply({content: 'Game ended. You can start a new one with /newgame', flags: MessageFlags.Ephemeral});
 			}
 			else if(userTryObj.reason == 'solution_not_valid'){
-				await interaction.reply({content: `Guess: ${guessWord}, not valid!`, ephemeral: true});
+				await interaction.reply({content: `Guess: ${guessWord}, not valid!`, flags: MessageFlags.Ephemeral});
 			}
 			else{
 				let letterStatusesEmojis = '';
@@ -52,7 +52,7 @@ module.exports = {
 						break;
 					}
 				}
-				await interaction.reply({content: `${guessWord}: ${letterStatusesEmojis}`, ephemeral: true});
+				await interaction.reply({content: `${guessWord}: ${letterStatusesEmojis}`, flags: MessageFlags.Ephemeral});
 
 				const boardImageRes = await fetch(`${ip}/api/game/getBoardForUser?username=${username}`, {
 					method: 'GET',
@@ -96,10 +96,10 @@ module.exports = {
 				})
 				const userSessionObj = await userSessionRes.json();
 				if(userSessionObj.status == 'unsolved'){
-					await interaction.followUp({content: `Remaining tries: ${userSessionObj.remaining_tries}`, ephemeral: true});
+					await interaction.followUp({content: `Remaining tries: ${userSessionObj.remaining_tries}`, flags: MessageFlags.Ephemeral});
 				}
 				else if(userSessionObj.status == 'solved'){
-					await interaction.followUp({content: `You win! The word was: ${userSessionObj.word}`, ephemeral: true});
+					await interaction.followUp({content: `You win! The word was: ${userSessionObj.word}`, flags: MessageFlags.Ephemeral});
 					const dictionaryWordRes = await fetch(`${ip}/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
 						method: 'GET',
 						headers: {
@@ -118,7 +118,7 @@ module.exports = {
 
 				}
 				else if(userSessionObj.status == 'game_over'){
-					await interaction.followUp({content: `Game over, the word was: ${userSessionObj.word}`, ephemeral: true});
+					await interaction.followUp({content: `Game over, the word was: ${userSessionObj.word}`, flags: MessageFlags.Ephemeral});
 					const dictionaryWordRes = await fetch(`${ip}/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
 						method: 'GET',
 						headers: {

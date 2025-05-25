@@ -2,9 +2,11 @@ const tmi = require('tmi.js');
 const fs = require('fs');
 const opener = require('opener');
 const readline = require('readline');
+require('dotenv').config();
 
 const TOKEN_FILE = 'token.json';
 const CREDENTIALS_FILE = 'credentials.json';
+const SERVER_IP = process.env.SERVER_IP;
 
 async function loadToken(filePath){
     try{
@@ -49,7 +51,7 @@ function registerMethods(client, botChannel){
     const chatMessage = message.toString().trim();
     if (self) return;
     if(chatMessage == '!newGame'){
-      fetch(`http://94.189.193.50:5003/api/game/new?username=${chatterUsername}`)
+      fetch(`${SERVER_IP}/api/game/new?username=${chatterUsername}`)
       .then(res => res.json())
       .then(res => {
           client.say(channel, `Starting new game: ${res.status}`);
@@ -61,7 +63,7 @@ function registerMethods(client, botChannel){
         username: chatterUsername,
         word: guessWord
       }
-      fetch(`http://94.189.193.50:5003/api/solutions/guess`, {
+      fetch(`${SERVER_IP}/api/solutions/guess`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -94,7 +96,7 @@ function registerMethods(client, botChannel){
           }
           client.say(channel, `${guessWord}: ${letterStatusesEmojis}`);
 
-          fetch(`http://94.189.193.50:5003/api/game/checkGameStatus?username=${chatterUsername}`, {
+          fetch(`${SERVER_IP}/api/game/checkGameStatus?username=${chatterUsername}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json'
