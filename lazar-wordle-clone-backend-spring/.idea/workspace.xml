@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bc01362-f962-4f3f-88e6-e44b62b1fc5f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.node-version" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.node-version" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.nvmrc" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.nvmrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/guess.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/guess.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/newgame.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/newgame.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/reload.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/reload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/deploy-commands.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/deploy-commands.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/events/interactionCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/events/interactionCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/runner/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/runner/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="8bc01362-f962-4f3f-88e6-e44b62b1fc5f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
