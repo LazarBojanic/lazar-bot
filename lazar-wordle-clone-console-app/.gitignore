@@ -3,4 +3,3 @@ target/
 .idea/
 .env
 src/main/resources/
-Dockerfile

@@ -1,22 +1,19 @@
-package com.lazar.lazarwordleclonebackendspring.model;
+package com.lazar.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
-
-import lombok.*;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "dictionary_words")
 public class DictionaryWord implements Serializable{
-    @MongoId
     @JsonProperty("_id")
-    private String _id;
+    private String id;
     @JsonProperty("word")
     private String word;
     @JsonProperty("phonetic")

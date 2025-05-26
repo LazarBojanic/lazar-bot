@@ -14,15 +14,12 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import com.lazar.lazarwordleclonebackendspring.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import com.lazar.lazarwordleclonebackendspring.model.Letter;
-import com.lazar.lazarwordleclonebackendspring.model.LetterStatus;
-import com.lazar.lazarwordleclonebackendspring.model.UserTry;
-import com.lazar.lazarwordleclonebackendspring.model.Word;
 import com.lazar.lazarwordleclonebackendspring.repository.UserTryRepository;
 import com.lazar.lazarwordleclonebackendspring.util.Util;
 
@@ -40,6 +37,18 @@ public class UserTryService {
     }
     public void deleteTriesForUser(String username){
         userTryRepository.deleteByUsername(username);
+    }
+    public List<LetterStatus> getLetterStatusesForUser(String username){
+        return getLetterStatuses(username, getUserTries(username));
+    }
+    public UserBoardRaw getBoardForUserRaw(String username){
+        List<UserTry> userTries = getUserTries(username);
+        return new UserBoardRaw(username, userTries);
+    }
+    public UserKeyboardRaw getKeyboardForUserRaw(String username){
+        List<UserTry> userTries = getUserTries(username);
+        List<LetterStatus> letterStatusList = getLetterStatuses(username, userTries);
+        return new UserKeyboardRaw(username, letterStatusList);
     }
     public Resource getKeyboardForUser(String username) {
         List<UserTry> userTries = getUserTries(username);
@@ -90,8 +99,7 @@ public class UserTryService {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             ImageIO.write(image, "png", outputStream);
             byte[] imageBytes = outputStream.toByteArray();
-            ByteArrayResource keyboardImageByteArrayResource = new ByteArrayResource(imageBytes);
-            return keyboardImageByteArrayResource;
+            return new ByteArrayResource(imageBytes);
         } catch (IOException e) {
             e.printStackTrace();
             return new ByteArrayResource(new byte[0]);
@@ -107,8 +115,8 @@ public class UserTryService {
             letterStatuses.add( new LetterStatus(alphabetLetter, Util.WHITE));
         }
         for(UserTry userTry : userTries){
-            for(Letter letter : userTry.getValidated_word().getLetters()){
-                Integer letterIndex = getLetterIndex(letterStatuses, letter.getLetter());
+            for(Letter letter : userTry.getValidatedWord().getLetters()){
+                int letterIndex = getLetterIndex(letterStatuses, letter.getLetter());
                 if(letter.getStatus().equalsIgnoreCase(Util.WHITE)){
                     if(!letterStatuses.get(letterIndex).getStatus().equalsIgnoreCase(Util.WHITE)){
                         letterStatuses.set(letterIndex, new LetterStatus(letter.getLetter(), letter.getStatus()));
@@ -147,8 +155,8 @@ public class UserTryService {
         int keySize = 40;
         int keySpacing = 10;
         int lettersPerRow = 5;
-        int numOfTriesDevider = 7;
-        int numRows = userTries.size() % numOfTriesDevider;
+        int numOfTriesDivider = 7;
+        int numRows = userTries.size() % numOfTriesDivider;
         int height = (numRows * (keySize + keySpacing)) + keySpacing;
         int width = lettersPerRow * (keySize + keySpacing) + keySpacing;
          Map<String, Color> colors = Map.of(
@@ -186,8 +194,7 @@ public class UserTryService {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             ImageIO.write(image, "png", outputStream);
             byte[] imageBytes = outputStream.toByteArray();
-            ByteArrayResource boardImageByteArrayResource = new ByteArrayResource(imageBytes);
-            return boardImageByteArrayResource;
+            return new ByteArrayResource(imageBytes);
         } catch (IOException e) {
             e.printStackTrace();
             return new ByteArrayResource(new byte[0]);
@@ -198,13 +205,13 @@ public class UserTryService {
     public List<LetterStatus> getLetterStatusesForBoard(String username, List<UserTry> userTries){
         List<LetterStatus> letterStatuses = new ArrayList<>();
         for(UserTry userTry : userTries){
-            for(Letter letter : userTry.getValidated_word().getLetters()){
+            for(Letter letter : userTry.getValidatedWord().getLetters()){
                 letterStatuses.add(new LetterStatus(letter.getLetter(), letter.getStatus()));
             }
         }
         return letterStatuses;
     }
-    public Integer getLetterIndex(List<LetterStatus> letterStatuses, String letter){
+    public int getLetterIndex(List<LetterStatus> letterStatuses, String letter){
         for(int i = 0; i < letterStatuses.size(); i++){
             if(letterStatuses.get(i).getLetter().equalsIgnoreCase(letter)){
                 return i;
@@ -212,7 +219,5 @@ public class UserTryService {
         }
         return -1;
     }
-    public List<LetterStatus> getLetterStatusesForUser(String username){
-        return getLetterStatuses(username, getUserTries(username));
-    }
+
 }

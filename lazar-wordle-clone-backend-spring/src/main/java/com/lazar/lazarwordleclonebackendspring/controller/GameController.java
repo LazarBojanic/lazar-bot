@@ -1,13 +1,6 @@
 package com.lazar.lazarwordleclonebackendspring.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.print.attribute.standard.Media;
-
+import com.lazar.lazarwordleclonebackendspring.model.*;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,11 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 
-import com.lazar.lazarwordleclonebackendspring.model.LetterStatus;
-import com.lazar.lazarwordleclonebackendspring.model.UserSession;
-import com.lazar.lazarwordleclonebackendspring.model.UserTry;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+
 import com.lazar.lazarwordleclonebackendspring.response.NewSolutionResponse;
-import com.lazar.lazarwordleclonebackendspring.service.SolutionService;
 import com.lazar.lazarwordleclonebackendspring.service.UserSessionService;
 import com.lazar.lazarwordleclonebackendspring.service.UserTryService;
 @RestController
@@ -67,6 +61,36 @@ public class GameController {
 			return ResponseEntity.internalServerError().body(new NewSolutionResponse("error"));
 		}
 	}
+    @GetMapping("/getBoardForUserRaw")
+    public ResponseEntity<UserBoardRaw> getBoardForUserRaw(@RequestParam String username) {
+        UserBoardRaw userBoardRaw = userTryService.getBoardForUserRaw(username);
+
+        /*StringBuilder stringbuilder = new StringBuilder();
+        for (int i = 0; i < userBoardRaw.getUserTryList().size(); i++) {
+            UserTry userTry = userBoardRaw.getUserTryList().get(i);
+            stringbuilder.append(userTry.getValidatedWord().getWord());
+            if(i < userBoardRaw.getUserTryList().size() - 1){
+                stringbuilder.append("\n");
+            }
+        }
+        System.out.println(stringbuilder);*/
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(userBoardRaw);
+    }
+
+	@GetMapping("/getKeyboardForUserRaw")
+	public ResponseEntity<UserKeyboardRaw> getKeyboardForUserRaw(@RequestParam String username) {
+        UserKeyboardRaw userKeyboardRaw = userTryService.getKeyboardForUserRaw(username);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(userKeyboardRaw);
+	}
     @GetMapping("/getKeyboardForUser")
 	public ResponseEntity<Resource> getKeyboardForUser(@RequestParam String username) {
         Resource keyboardImage = userTryService.getKeyboardForUser(username);
@@ -86,6 +110,7 @@ public class GameController {
             return ResponseEntity.notFound().build();
         }
 	}
+
     @GetMapping("/getBoardForUser")
 	public ResponseEntity<Resource> getBoardForUser(@RequestParam String username) {
         Resource keyboardImage = userTryService.getBoardForUser(username);

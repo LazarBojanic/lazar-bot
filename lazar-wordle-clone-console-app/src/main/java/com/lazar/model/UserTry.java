@@ -1,15 +1,15 @@
-package com.lazar.lazarwordleclonebackendspring.model;
+package com.lazar.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "user_tries")
 public class UserTry implements Serializable{
     @JsonProperty("username")
 	private String username;

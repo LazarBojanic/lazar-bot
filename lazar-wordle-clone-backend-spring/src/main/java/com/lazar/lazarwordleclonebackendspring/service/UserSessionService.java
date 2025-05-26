@@ -3,13 +3,11 @@ package com.lazar.lazarwordleclonebackendspring.service;
 import com.lazar.lazarwordleclonebackendspring.model.UserSession;
 import com.lazar.lazarwordleclonebackendspring.repository.SolutionRepository;
 import com.lazar.lazarwordleclonebackendspring.repository.UserSessionRepository;
-import com.lazar.lazarwordleclonebackendspring.repository.UserTryRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -26,25 +24,25 @@ public class UserSessionService {
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         return optionalUserSolution.orElseGet(() -> createNewSolutionForUser(username));
     }
-    public Boolean decrementRemainingTriesForUser(String username){
+    public boolean decrementRemainingTriesForUser(String username){
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         if(optionalUserSolution.isPresent()){
             UserSession userSession = optionalUserSolution.get();
-            userSession.setRemaining_tries(userSession.getRemaining_tries() - 1);
+            userSession.setRemainingTries(userSession.getRemainingTries() - 1);
             userSessionRepository.save(userSession);
             return true;
         }
         return false;
     }
-    public Integer getRemainingTriesForUser(String username){
+    public int getRemainingTriesForUser(String username){
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         if(optionalUserSolution.isPresent()){
             UserSession userSession = optionalUserSolution.get();
-            return userSession.getRemaining_tries();
+            return userSession.getRemainingTries();
         }
         return -1;
     }
-    public Boolean setStatusForUser(String username, String status){
+    public boolean setStatusForUser(String username, String status){
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         if(optionalUserSolution.isPresent()){
             UserSession userSession = optionalUserSolution.get();
@@ -75,7 +73,7 @@ public class UserSessionService {
         }
         userSession.setWord(solutionRepository.findRandomSolution().get().getWord());
         userSession.setStatus("unsolved");
-        userSession.setRemaining_tries(6);
+        userSession.setRemainingTries(6);
         userSessionRepository.save(userSession);
         return userSession;
     }
@@ -92,7 +90,7 @@ public class UserSessionService {
         }
         userSession.setWord(solutionRepository.findByWord(word.toUpperCase()).get().getWord());
         userSession.setStatus("unsolved");
-        userSession.setRemaining_tries(6);
+        userSession.setRemainingTries(6);
         userSessionRepository.save(userSession);
         return userSession;
     }
