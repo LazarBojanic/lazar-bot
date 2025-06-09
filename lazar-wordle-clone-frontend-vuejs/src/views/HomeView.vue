@@ -1,7 +1,12 @@
 <template>
-  <p>Home</p>
+  <main>
+    <KeyboardComponent/>
+  </main>
 </template>
 
-<script setup></script>
+<script setup>
+
+import KeyboardComponent from '@/components/KeyboardComponent.vue';
+</script>
 
 <style scoped></style>
