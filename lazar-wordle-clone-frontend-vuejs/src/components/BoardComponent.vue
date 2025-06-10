@@ -1,9 +1,9 @@
 <template>
   <v-container class="pa-0" fluid>
-    <div v-for="(keyboardRow, i) in wordleStore.keyBoardRows" :key="i">
+    <div v-for="(word, i) in wordleStore.board" :key="i">
       <v-row class="justify-center" dense>
-        <v-col cols="auto" v-for="characterTile in keyboardRow" :key="characterTile.index">
-          <KeyComponent :characterTile="characterTile" />
+        <v-col cols="auto" v-for="characterTile in word.characterTiles" :key="characterTile.index">
+          <BoardTileComponent :characterTile="characterTile" />
         </v-col>
       </v-row>
     </div>
@@ -11,8 +11,8 @@
 </template>
 
 <script setup>
-import KeyComponent from '@/components/KeyComponent.vue';
 import { useWordleStore } from '@/stores/wordle.js';
+import BoardTileComponent from '@/components/BoardTileComponent.vue';
 const wordleStore = useWordleStore();
 </script>
 
