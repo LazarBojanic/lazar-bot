@@ -18,8 +18,8 @@ import lombok.*;
 @Document(collection = "solutions")
 public class Solution{
 	@MongoId
-	@JsonProperty("id")
 	@NotNull
+	@JsonProperty("id")
 	private Long _id;
 	@NotNull
 	@Length(max = 5)

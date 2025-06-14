@@ -8,8 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SimpleMeaning {
-    @JsonProperty("part_of_speech")
-    private String part_of_speech;
+    @JsonProperty("partOfSpeech")
+    private String partOfSpeech;
     @JsonProperty("definitions")
     private List<String> definitions;
 }

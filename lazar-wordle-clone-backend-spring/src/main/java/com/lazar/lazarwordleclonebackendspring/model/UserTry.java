@@ -9,10 +9,10 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "user_tries")
+@Document(collection = "userTries")
 public class UserTry implements Serializable{
     @JsonProperty("username")
 	private String username;
-    @JsonProperty("validated_word")
+    @JsonProperty("validatedWord")
 	private Word validatedWord;
 }

@@ -28,31 +28,31 @@ public class UserTryService {
     @Autowired
     private UserTryRepository userTryRepository;
 
-    public UserTry addTryForUser(String username, Word validated_word){
-        UserTry userTry = new UserTry(username, validated_word);
+    public UserTry addTryForUser(String username, Word validatedWord){
+        UserTry userTry = new UserTry(username, validatedWord);
         return userTryRepository.insert(userTry);
     }
     public List<UserTry> getUserTries(String username){
-        return userTryRepository.findAllByUsername(username).get();
+        var optionalUserTryList = userTryRepository.findAllByUsername(username);
+        return optionalUserTryList.orElse(new ArrayList<>());
     }
-    public void deleteTriesForUser(String username){
+    public void deleteTries(String username){
         userTryRepository.deleteByUsername(username);
     }
     public List<LetterStatus> getLetterStatusesForUser(String username){
         return getLetterStatuses(username, getUserTries(username));
     }
-    public UserBoardRaw getBoardForUserRaw(String username){
+    public UserBoard getBoard(String username){
         List<UserTry> userTries = getUserTries(username);
-        return new UserBoardRaw(username, userTries);
+        return new UserBoard(username, userTries);
     }
-    public UserKeyboardRaw getKeyboardForUserRaw(String username){
+    public UserKeyboard getKeyboard(String username){
         List<UserTry> userTries = getUserTries(username);
         List<LetterStatus> letterStatusList = getLetterStatuses(username, userTries);
-        return new UserKeyboardRaw(username, letterStatusList);
+        return new UserKeyboard(username, letterStatusList);
     }
-    public Resource getKeyboardForUser(String username) {
+    public Resource getKeyboardImage(String username) {
         List<UserTry> userTries = getUserTries(username);
-           
         int keySize = 40;
         int keySpacing = 10;
         Map<String, Color> colors = Map.of(
@@ -62,7 +62,6 @@ public class UserTryService {
             "W", new Color(255, 255, 255)
         );
         int fontSize = 25;
-
         int keysPerRow = 8;
         int keysPerColumn = 4;
         int width = keysPerRow * (keySize + keySpacing) + keySpacing;
@@ -150,7 +149,7 @@ public class UserTryService {
         }
         return letterStatuses;
     }
-    public Resource getBoardForUser(String username) {
+    public Resource getBoardImage(String username) {
         List<UserTry> userTries = getUserTries(username);
         int keySize = 40;
         int keySpacing = 10;
@@ -189,7 +188,6 @@ public class UserTryService {
                 y += keySize + keySpacing;
             }
         }
-    
         try {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             ImageIO.write(image, "png", outputStream);
@@ -219,5 +217,4 @@ public class UserTryService {
         }
         return -1;
     }
-
 }

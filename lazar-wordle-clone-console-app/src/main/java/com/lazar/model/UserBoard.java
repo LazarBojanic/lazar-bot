@@ -13,6 +13,6 @@ import java.util.List;
 public class UserBoard implements Serializable {
     @JsonProperty("username")
     private String username;
-    @JsonProperty("user_try_list")
+    @JsonProperty("userTryList")
     private List<UserTry> userTryList;
 }

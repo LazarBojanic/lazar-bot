@@ -17,12 +17,12 @@ import lombok.ToString;
 @Builder
 @ToString
 public class UserTryResponse {
-	@JsonProperty("solution_is_valid")
-	private Boolean solution_is_valid;
+	@JsonProperty("solutionIsValid")
+	private Boolean solutionIsValid;
 	@JsonProperty("reason")
 	private String reason;
-	@JsonProperty("validated_word")
-	private Word validated_word;
+	@JsonProperty("validatedWord")
+	private Word validatedWord;
 	@JsonProperty("word")
 	private String word;
 }

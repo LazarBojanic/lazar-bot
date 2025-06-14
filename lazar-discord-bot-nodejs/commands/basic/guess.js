@@ -12,8 +12,6 @@ module.exports = {
 				.setDescription('Word guess.')
 				.setRequired(true)),
 	category: 'basic',
-	
-
 	async execute(interaction) {
 		try{
 			const username = interaction.user.username;
@@ -23,7 +21,7 @@ module.exports = {
 				username: username,
 				word: guessWord
 			}
-			const userTryObjRes = await fetch(`${ip}/api/solutions/guess`, {
+			const userTryObjRes = await fetch(`${ip}game/guess`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -31,16 +29,16 @@ module.exports = {
 				body: JSON.stringify(userTryRequest)
 			})
 			const userTryObj = await userTryObjRes.json();
-			if(userTryObj.reason == 'game_ended'){
+			if(userTryObj.reason === 'gameEnded'){
 				await interaction.reply({content: 'Game ended. You can start a new one with /newgame', flags: MessageFlags.Ephemeral});
 			}
-			else if(userTryObj.reason == 'solution_not_valid'){
+			else if(userTryObj.reason === 'solutionNotValid'){
 				await interaction.reply({content: `Guess: ${guessWord}, not valid!`, flags: MessageFlags.Ephemeral});
 			}
 			else{
 				let letterStatusesEmojis = '';
-				for(let i = 0; i < userTryObj.validated_word.letters.length; i++){
-					switch(userTryObj.validated_word.letters[i].status){
+				for(let i = 0; i < userTryObj.validatedWord.letters.length; i++){
+					switch(userTryObj.validatedWord.letters[i].status){
 					case 'R':
 						letterStatusesEmojis = letterStatusesEmojis.concat('❌');
 						break;
@@ -53,54 +51,42 @@ module.exports = {
 					}
 				}
 				await interaction.reply({content: `${guessWord}: ${letterStatusesEmojis}`, flags: MessageFlags.Ephemeral});
-
-				const boardImageRes = await fetch(`${ip}/api/game/getBoardForUser?username=${username}`, {
+				const boardImageRes = await fetch(`${ip}game/get-board-image?username=${username}`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'image/png'
 					}
 				})
 				const boardImageBuffer = await boardImageRes.arrayBuffer();
-				/*const boardImagePath = `./assets/board_${username}.png`;
-				fs.writeFile(boardImagePath, Buffer.from(boardImageBuffer), async (err) => {
-					
-				});*/
-
 				await interaction.followUp({files: [{
 					attachment: Buffer.from(boardImageBuffer),
 					name: `board_${username}.png`
 				}], ephemeral: true})
 
-				const keyboardImageRes = await fetch(`${ip}/api/game/getKeyboardForUser?username=${username}`, {
+				const keyboardImageRes = await fetch(`${ip}game/get-keyboard-image?username=${username}`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'image/png'
 					}
 				})
 				const keyboardImageBuffer = await keyboardImageRes.arrayBuffer();
-				/*const keyboardImagePath = `./assets/keyboard_${username}.png`;
-				fs.writeFile(keyboardImagePath, Buffer.from(keyboardImageBuffer), async (err) => {
-					
-				});*/
-
 				await interaction.followUp({files: [{
 					attachment: Buffer.from(keyboardImageBuffer),
 					name: `keyboard_${username}.png`
 				}], ephemeral: true})
 
-				const userSessionRes = await fetch(`${ip}/api/game/checkGameStatus?username=${username}`, {
+				const userSessionRes = await fetch(`${ip}game/check-game-status?username=${username}`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json'
 					}
 				})
 				const userSessionObj = await userSessionRes.json();
-				if(userSessionObj.status == 'unsolved'){
-					await interaction.followUp({content: `Remaining tries: ${userSessionObj.remaining_tries}`, flags: MessageFlags.Ephemeral});
+				if(userSessionObj.status === 'unsolved'){
+					await interaction.followUp({content: `Remaining tries: ${userSessionObj.remainingTries}`, flags: MessageFlags.Ephemeral});
 				}
-				else if(userSessionObj.status == 'solved'){
-					await interaction.followUp({content: `You win! The word was: ${userSessionObj.word}`, flags: MessageFlags.Ephemeral});
-					const dictionaryWordRes = await fetch(`${ip}/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
+				else{
+					const dictionaryWordRes = await fetch(`${ip}dictionary-words/get-simple?word=${userSessionObj.word}`, {
 						method: 'GET',
 						headers: {
 							'Content-Type': 'application/json'
@@ -108,32 +94,26 @@ module.exports = {
 					})
 					const dictionaryWordObj = await dictionaryWordRes.json();
 					let dictionaryWordFormattedString = `Word: ${dictionaryWordObj.word}\n`;
-					dictionaryWordObj.meanings.forEach(meaning => {
-						dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\tPart of Speech: ${meaning.part_of_speech}\n`)
-						meaning.definitions.forEach(definition => {
-							dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\t\tDefinition: ${definition}\n`)
-						})		
-					})
-					await util.sendLargeMessage(interaction, dictionaryWordFormattedString);
-
-				}
-				else if(userSessionObj.status == 'game_over'){
-					await interaction.followUp({content: `Game over, the word was: ${userSessionObj.word}`, flags: MessageFlags.Ephemeral});
-					const dictionaryWordRes = await fetch(`${ip}/api/dictionaryWords/getSimpleByWord?word=${userSessionObj.word}`, {
-						method: 'GET',
-						headers: {
-							'Content-Type': 'application/json'
-						}
-					})
-					const dictionaryWordObj = await dictionaryWordRes.json();
-					let dictionaryWordFormattedString = `Word: ${dictionaryWordObj.word}\n`;
-					dictionaryWordObj.meanings.forEach(meaning => {
-						dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\tPart of Speech: ${meaning.part_of_speech}\n`)
-						meaning.definitions.forEach(definition => {
-							dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\t\tDefinition: ${definition}\n`)
-						})		
-					})
-					await util.sendLargeMessage(interaction, dictionaryWordFormattedString);
+					if(userSessionObj.status === 'solved'){
+						await interaction.followUp({content: `You win! The word was: ${userSessionObj.word}`, flags: MessageFlags.Ephemeral});
+						dictionaryWordObj.meanings.forEach(meaning => {
+							dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\tPart of Speech: ${meaning.partOfSpeech}\n`)
+							meaning.definitions.forEach(definition => {
+								dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\t\tDefinition: ${definition}\n`)
+							})
+						})
+						await util.sendLargeMessage(interaction, dictionaryWordFormattedString);
+					}
+					else if(userSessionObj.status === 'gameOver'){
+						await interaction.followUp({content: `Game over, the word was: ${userSessionObj.word}`, flags: MessageFlags.Ephemeral});
+						dictionaryWordObj.meanings.forEach(meaning => {
+							dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\tPart of Speech: ${meaning.partOfSpeech}\n`)
+							meaning.definitions.forEach(definition => {
+								dictionaryWordFormattedString = dictionaryWordFormattedString.concat(`\t\tDefinition: ${definition}\n`)
+							})
+						})
+						await util.sendLargeMessage(interaction, dictionaryWordFormattedString);
+					}
 				}
 			}
 		}

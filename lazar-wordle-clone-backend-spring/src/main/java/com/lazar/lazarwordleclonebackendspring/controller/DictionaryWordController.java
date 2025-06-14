@@ -3,6 +3,7 @@ package com.lazar.lazarwordleclonebackendspring.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Optional;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,21 +22,21 @@ import com.lazar.lazarwordleclonebackendspring.model.SimpleDictionaryWord;
 import com.lazar.lazarwordleclonebackendspring.service.DictionaryWordService;
 
 @RestController
-@RequestMapping("/dictionaryWords")
+@RequestMapping("/dictionary-words")
 public class DictionaryWordController {
 	@Autowired
 	private DictionaryWordService dictionaryWordService;
-    @GetMapping("/getByWord")
-	public ResponseEntity<DictionaryWord> getDictionaryWordByWord(@RequestParam String word) {
-		return ResponseEntity.ok(dictionaryWordService.getDictionaryWordByWord(word));
+    @GetMapping("/get-by-word")
+	public ResponseEntity<DictionaryWord> getByWord(@RequestParam String word) {
+		return ResponseEntity.ok(dictionaryWordService.getByWord(word));
 	}
-    @GetMapping("/getSimpleByWord")
-	public ResponseEntity<SimpleDictionaryWord> getSimpleDictionaryWordByWord(@RequestParam String word) {
-		return ResponseEntity.ok(dictionaryWordService.getSimpleDictionaryWordByWord(word));
+    @GetMapping("/get-simple-by-word")
+	public ResponseEntity<SimpleDictionaryWord> getSimpleByWord(@RequestParam String word) {
+		return ResponseEntity.ok(dictionaryWordService.getSimpleByWord(word));
 	}
-    @GetMapping("/getImageByWord")
-	public ResponseEntity<Resource> getDictionaryWordImageByWord(@RequestParam String word) {
-        Resource dictionaryWordImage = dictionaryWordService.getDictionaryWordImageByWord(word);
+    @GetMapping("/get-image-by-word")
+	public ResponseEntity<Resource> getImageByWord(@RequestParam String word) {
+        Resource dictionaryWordImage = dictionaryWordService.getImageByWord(word);
         try {
             File tempFile = File.createTempFile(word, ".png");
             FileOutputStream fos = new FileOutputStream(tempFile);
@@ -52,8 +53,8 @@ public class DictionaryWordController {
             return ResponseEntity.notFound().build();
         }
 	}
-    @GetMapping("/getLongestSimple")
-	public ResponseEntity<SimpleDictionaryWord> getLongestSimpleDictionaryWord() {
-		return ResponseEntity.ok(dictionaryWordService.getLongestSimpleDictionaryWord());
+    @GetMapping("/get-longest-simple")
+	public ResponseEntity<SimpleDictionaryWord> getLongestSimple() {
+		return ResponseEntity.ok(dictionaryWordService.getLongestSimple());
 	}
 }

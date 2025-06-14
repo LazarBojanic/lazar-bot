@@ -9,9 +9,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserBoardRaw {
+public class UserBoard {
     @JsonProperty("username")
     private String username;
-    @JsonProperty("user_try_list")
+    @JsonProperty("userTryList")
     private List<UserTry> userTryList;
 }

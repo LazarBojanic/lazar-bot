@@ -18,6 +18,9 @@ public class Runner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		//printAllMappings();
+	}
+	public void printAllMappings() {
 		Map<RequestMappingInfo, HandlerMethod> handlerMethods = requestMappingHandlerMapping.getHandlerMethods();
 
 		handlerMethods.entrySet().stream()

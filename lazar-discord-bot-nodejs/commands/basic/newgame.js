@@ -9,7 +9,7 @@ module.exports = {
 	async execute(interaction) {
 		try{
 			const username = interaction.user.username;
-			const newGameRes = await fetch(`${ip}/api/game/new?username=${username}`)
+			const newGameRes = await fetch(`${ip}game/new-game?username=${username}`)
 			const newGameObj = await newGameRes.json();
 			await interaction.reply({content: `Starting new game: ${newGameObj.status}`, flags: MessageFlags.Ephemeral});
 		}

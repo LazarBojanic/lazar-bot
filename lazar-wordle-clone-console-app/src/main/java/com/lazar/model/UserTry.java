@@ -13,6 +13,6 @@ import java.io.Serializable;
 public class UserTry implements Serializable{
     @JsonProperty("username")
 	private String username;
-    @JsonProperty("validated_word")
+    @JsonProperty("validatedWord")
 	private Word validatedWord;
 }

@@ -20,21 +20,19 @@ public class UserSessionService {
     @Autowired
     private UserTryService userTryService;
 
-    public UserSession getCurrentSolutionForUser(String username){
+    public UserSession getCurrentSolution(String username){
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
-        return optionalUserSolution.orElseGet(() -> createNewSolutionForUser(username));
+        return optionalUserSolution.orElseGet(() -> createNewSolution(username));
     }
-    public boolean decrementRemainingTriesForUser(String username){
+    public void decrementRemainingTries(String username){
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         if(optionalUserSolution.isPresent()){
             UserSession userSession = optionalUserSolution.get();
             userSession.setRemainingTries(userSession.getRemainingTries() - 1);
             userSessionRepository.save(userSession);
-            return true;
         }
-        return false;
     }
-    public int getRemainingTriesForUser(String username){
+    public int getRemainingTries(String username){
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         if(optionalUserSolution.isPresent()){
             UserSession userSession = optionalUserSolution.get();
@@ -42,26 +40,24 @@ public class UserSessionService {
         }
         return -1;
     }
-    public boolean setStatusForUser(String username, String status){
+    public void setStatus(String username, String status){
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         if(optionalUserSolution.isPresent()){
             UserSession userSession = optionalUserSolution.get();
             userSession.setStatus(status);
             userSessionRepository.save(userSession);
-            return true;
         }
-        return false;
     }
-    public String getStatusForUser(String username){
+    public String getStatus(String username){
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         if(optionalUserSolution.isPresent()){
             UserSession userSession = optionalUserSolution.get();
             return userSession.getStatus();
         }
-        return "game_over";
+        return "gameOver";
     }
-    public UserSession createNewSolutionForUser(String username){
-        userTryService.deleteTriesForUser(username);
+    public UserSession createNewSolution(String username){
+        userTryService.deleteTries(username);
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         UserSession userSession;
         if(optionalUserSolution.isPresent()){
@@ -77,8 +73,8 @@ public class UserSessionService {
         userSessionRepository.save(userSession);
         return userSession;
     }
-    public UserSession setSolutionForUser(String username, String word){
-        userTryService.deleteTriesForUser(username);
+    public UserSession setSolution(String username, String word){
+        userTryService.deleteTries(username);
         Optional<UserSession> optionalUserSolution = userSessionRepository.findByUsername(username);
         UserSession userSession;
         if(optionalUserSolution.isPresent()){
@@ -94,7 +90,7 @@ public class UserSessionService {
         userSessionRepository.save(userSession);
         return userSession;
     }
-    public UserSession checkGameStatus(String username){
+    public UserSession checkStatus(String username){
         Optional<UserSession> optionalUserSession = userSessionRepository.findByUsername(username);
         UserSession userSession;
         if(optionalUserSession.isPresent()){

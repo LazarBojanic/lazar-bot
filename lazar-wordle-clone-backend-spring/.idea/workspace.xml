@@ -5,8 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8bc01362-f962-4f3f-88e6-e44b62b1fc5f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.idea/dictionaries/project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.idea/lazar-discord-bot-nodejs.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/guess.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/guess.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/newgame.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/newgame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/reload.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/commands/basic/reload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-discord-bot-nodejs/eslint.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/controller/DictionaryWordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/controller/DictionaryWordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/controller/GuessController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/controller/SolutionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/DictionaryWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/DictionaryWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/Guess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/Guess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/SimpleMeaning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/SimpleMeaning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserBoardRaw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserKeyboardRaw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserKeyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserTry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/model/UserTry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/repository/DictionaryWordRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/repository/DictionaryWordRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/repository/GuessRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/repository/GuessRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/repository/UserTryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/repository/UserTryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/response/UserTryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/response/UserTryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/runner/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/runner/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/DictionaryWordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/DictionaryWordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/SolutionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/SolutionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/UserSessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/UserSessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/UserTryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/service/UserTryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazar/lazarwordleclonebackendspring/util/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/.env" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/core/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/core/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/DictionaryWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/DictionaryWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/SimpleMeaning.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/SimpleMeaning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/UserBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/UserBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/UserKeyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/UserKeyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/UserSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/UserTry.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/model/UserTry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/response/UserTryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/response/UserTryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/util/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/util/ApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/java/com/lazar/util/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/resources/.env" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/resources/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-console-app/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-frontend-vuejs/src/stores/wordle.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-frontend-vuejs/src/stores/wordle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazar-wordle-clone-frontend-vuejs/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../lazar-wordle-clone-frontend-vuejs/src/views/HomeView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,40 +103,40 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.dumbe01/lazar-wordle-clone-backend-spring.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.lazar-wordle-clone-backend-spring.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Maven Clean Install.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.LazarWordleCloneBackendSpringApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bojan/WebProjects/lazar-bot/lazar-wordle-clone-backend-spring&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Application.Main.executor": "Run",
+    "Docker.dumbe01/lazar-wordle-clone-backend-spring.executor": "Run",
+    "Docker.lazar-wordle-clone-backend-spring.executor": "Run",
+    "Maven.Maven Clean Install.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.LazarWordleCloneBackendSpringApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/bojan/WebProjects/lazar-bot/lazar-wordle-clone-backend-spring",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\bojan\WebProjects\lazar-bot\lazar-wordle-clone-backend-spring" />
@@ -184,8 +235,8 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Maven.Maven Clean Install" />
       <item itemvalue="Docker.dumbe01/lazar-wordle-clone-backend-spring" />
+      <item itemvalue="Maven.Maven Clean Install" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

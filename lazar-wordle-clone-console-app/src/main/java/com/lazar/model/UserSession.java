@@ -17,6 +17,6 @@ public class UserSession implements Serializable {
     private String word;
     @JsonProperty("status")
     private String status;
-    @JsonProperty("remaining_tries")
+    @JsonProperty("remainingTries")
     private Integer remainingTries;
 }

@@ -8,6 +8,7 @@ import com.lazar.response.UserTryResponse;
 import com.lazar.util.ApiClient;
 import com.lazar.util.Util;
 import io.github.cdimascio.dotenv.Dotenv;
+import org.apache.commons.lang3.StringUtils;
 import org.fusesource.jansi.AnsiConsole;
 
 import java.io.BufferedReader;
@@ -64,7 +65,7 @@ public class App {
                                     username = splitCommand[1];
                                     userTryRequest.setUsername(username);
                                     currentState = State.PLAYING;
-                                    httpResponse = apiClient.get(String.format("/game/new?username=%s", userTryRequest.getUsername()));
+                                    httpResponse = apiClient.get(String.format("game/new-game?username=%s", userTryRequest.getUsername()));
                                     if (httpResponse.statusCode() == 200) {
                                         Util.printMessage("You have started the game. Please guess a word:");
                                     }
@@ -84,46 +85,47 @@ public class App {
                                 if (splitCommand[0].equalsIgnoreCase("guess")) {
                                     guessWord = splitCommand[1];
                                     userTryRequest.setWord(guessWord);
-                                    httpResponse = apiClient.post("/solutions/guess", userTryRequest);
+                                    httpResponse = apiClient.post("game/guess", userTryRequest);
                                     String userTryResponseJson = httpResponse.body().toString();
                                     userTryResponse = Util.jsonStringToObject(userTryResponseJson, UserTryResponse.class);
                                     if (httpResponse.statusCode() == 200) {
                                         if (userTryResponse.getSolutionIsValid()) {
                                             System.out.println("------------------------------");
-                                            System.out.println("Your guess: " + Util.getValidatedWordString(userTryResponse.getValidatedWord()) + " = " + userTryResponse.getReason().split("_")[1].toUpperCase());
+                                            String correctness = StringUtils.removeStart(userTryResponse.getReason(), "solution").toUpperCase();
+                                            System.out.println("Your guess: " + Util.getValidatedWordString(userTryResponse.getValidatedWord()) + " = " + correctness);
                                             System.out.println("------------------------------");
-                                            httpResponse = apiClient.get(String.format("/game/getBoardForUserRaw?username=%s", userTryRequest.getUsername()));
+                                            httpResponse = apiClient.get(String.format("game/get-board?username=%s", userTryRequest.getUsername()));
                                             String userBoardJson = httpResponse.body().toString();
                                             UserBoard userBoard = Util.jsonStringToObject(userBoardJson, UserBoard.class);
                                             String userBoardString = Util.getUserBoardString(userBoard);
                                             System.out.println(userBoardString);
                                             System.out.println("------------------------------");
-                                            httpResponse = apiClient.get(String.format("/game/getKeyboardForUserRaw?username=%s", userTryRequest.getUsername()));
+                                            httpResponse = apiClient.get(String.format("game/get-keyboard?username=%s", userTryRequest.getUsername()));
                                             String userKeyboardJson = httpResponse.body().toString();
                                             UserKeyboard userKeyboard = Util.jsonStringToObject(userKeyboardJson, UserKeyboard.class);
                                             System.out.println(Util.getUserKeyboardString(userKeyboard));
                                             System.out.println("------------------------------");
-                                            httpResponse = apiClient.get(String.format("/game/checkGameStatus?username=%s", userTryRequest.getUsername()));
+                                            httpResponse = apiClient.get(String.format("game/check-status?username=%s", userTryRequest.getUsername()));
                                             String userSessionJson = httpResponse.body().toString();
                                             UserSession userSession = Util.jsonStringToObject(userSessionJson, UserSession.class);
                                             System.out.println(String.format("Remaining tries: %s", userSession.getRemainingTries()));
                                             if (userSession.getStatus().equalsIgnoreCase("solved")) {
-                                                httpResponse = apiClient.get(String.format("/dictionaryWords/getSimpleByWord?word=%s", userSession.getWord()));
+                                                httpResponse = apiClient.get(String.format("dictionary-words/get-simple?word=%s", userSession.getWord()));
                                                 String simpleDictionaryWordJson = httpResponse.body().toString();
                                                 SimpleDictionaryWord simpleDictionaryWord = Util.jsonStringToObject(simpleDictionaryWordJson, SimpleDictionaryWord.class);
                                                 Util.printMessage(Util.getSimpleDictionaryWordString(simpleDictionaryWord));
                                                 Util.printMessage("Congratulations! You have guessed the word correctly. Start a new game with newGame or go back with menu.");
-                                                userSession.setStatus("game_over");
+                                                userSession.setStatus("gameOver");
                                                 currentState = State.GAME_OVER;
                                             }
                                             else{
                                                 if(userSession.getRemainingTries() <= 0){
-                                                    httpResponse = apiClient.get(String.format("/dictionaryWords/getSimpleByWord?word=%s", userSession.getWord()));
+                                                    httpResponse = apiClient.get(String.format("dictionary-words/get-simple?word=%s", userSession.getWord()));
                                                     String simpleDictionaryWordJson = httpResponse.body().toString();
                                                     SimpleDictionaryWord simpleDictionaryWord = Util.jsonStringToObject(simpleDictionaryWordJson, SimpleDictionaryWord.class);
                                                     Util.printMessage(Util.getSimpleDictionaryWordString(simpleDictionaryWord));
                                                     Util.printMessage("Game over. Start a new game with newGame or go back with menu.");
-                                                    userSession.setStatus("game_over");
+                                                    userSession.setStatus("gameOver");
                                                     currentState = State.GAME_OVER;
                                                 }
                                                 else{

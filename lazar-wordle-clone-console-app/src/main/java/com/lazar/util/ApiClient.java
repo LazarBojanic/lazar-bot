@@ -18,7 +18,7 @@ public class ApiClient {
     private HttpClient httpClient;
     private String baseUri;
     public ApiClient(String baseUri){
-        this.baseUri = baseUri.endsWith("/") ? baseUri + "api" : baseUri + "/api";
+        this.baseUri = baseUri;
         this.httpClient = HttpClient.newHttpClient();
     }
     public HttpResponse<String> get(String endpoint) throws IOException, InterruptedException {

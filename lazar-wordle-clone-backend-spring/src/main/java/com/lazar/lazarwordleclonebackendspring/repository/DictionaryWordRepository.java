@@ -9,5 +9,5 @@ import com.lazar.lazarwordleclonebackendspring.model.DictionaryWord;
 
 @Repository
 public interface DictionaryWordRepository extends MongoRepository<DictionaryWord, String>{
-	public Optional<DictionaryWord> findByWord(String word);
+	Optional<DictionaryWord> findByWord(String word);
 }

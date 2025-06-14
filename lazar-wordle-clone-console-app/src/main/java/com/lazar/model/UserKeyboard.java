@@ -14,6 +14,6 @@ import java.util.List;
 public class UserKeyboard implements Serializable {
     @JsonProperty("username")
 	private String username;
-	@JsonProperty("letter_status_list")
+	@JsonProperty("letterStatusList")
 	private List<LetterStatus> letterStatusList;
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SimpleMeaning implements Serializable {
-    @JsonProperty("part_of_speech")
+    @JsonProperty("partOfSpeech")
     private String partOfSpeech;
     @JsonProperty("definitions")
     private List<String> definitions;

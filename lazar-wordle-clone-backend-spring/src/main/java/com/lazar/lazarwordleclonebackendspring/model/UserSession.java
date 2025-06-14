@@ -11,15 +11,15 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "user_sessions")
+@Document(collection = "userSessions")
 public class UserSession implements Serializable {
-    @JsonProperty("username")
     @MongoId
+    @JsonProperty("username")
     private String username;
     @JsonProperty("word")
     private String word;
     @JsonProperty("status")
     private String status;
-    @JsonProperty("remaining_tries")
+    @JsonProperty("remainingTries")
     private Integer remainingTries;
 }

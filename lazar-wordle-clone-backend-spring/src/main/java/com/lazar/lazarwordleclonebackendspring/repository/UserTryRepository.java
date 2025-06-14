@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.List;
 @Repository
 public interface UserTryRepository extends MongoRepository<UserTry, String> {
-    Optional<UserTry> findByUsername(String username);
     Optional<List<UserTry>> findAllByUsername(String username);
     void deleteByUsername(String username);
 }

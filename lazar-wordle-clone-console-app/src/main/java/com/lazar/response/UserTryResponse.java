@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserTryResponse {
-    @JsonProperty("solution_is_valid")
+    @JsonProperty("solutionIsValid")
     private Boolean solutionIsValid;
     @JsonProperty("reason")
     private String reason;
-    @JsonProperty("validated_word")
+    @JsonProperty("validatedWord")
     private Word validatedWord;
     @JsonProperty("word")
     private String word;

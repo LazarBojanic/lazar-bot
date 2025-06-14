@@ -14,8 +14,8 @@ import lombok.*;
 @Document(collection = "guesses")
 public class Guess{
 	@MongoId
-	@JsonProperty("id")
 	@NotNull
+	@JsonProperty("id")
 	private Long _id;
 	@NotNull
 	@Length(max = 5)

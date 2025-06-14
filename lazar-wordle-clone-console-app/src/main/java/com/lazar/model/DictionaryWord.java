@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DictionaryWord implements Serializable{
-    @JsonProperty("_id")
+    @JsonProperty("id")
     private String id;
     @JsonProperty("word")
     private String word;
@@ -24,7 +24,7 @@ public class DictionaryWord implements Serializable{
     private List<Meaning> meanings;
     @JsonProperty("license")
     private License license;
-    @JsonProperty("source_urls")
+    @JsonProperty("sourceUrls")
     private List<String> sourceUrls;
 
     @Data
@@ -35,7 +35,7 @@ public class DictionaryWord implements Serializable{
         private String text;
         @JsonProperty("audio")
         private String audio;
-        @JsonProperty("source_url")
+        @JsonProperty("sourceUrl")
         private String sourceUrl;
         @JsonProperty("license")
         private License license;
@@ -45,7 +45,7 @@ public class DictionaryWord implements Serializable{
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Meaning {
-        @JsonProperty("part_of_speech")
+        @JsonProperty("partOfSpeech")
         private String partOfSpeech;
         @JsonProperty("definitions")
         private List<Definition> definitions;

@@ -1,10 +1,6 @@
 package com.lazar.lazarwordleclonebackendspring.model;
 
-import org.hibernate.validator.constraints.Length;
-import org.springframework.data.mongodb.core.mapping.MongoId;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.List;
@@ -12,9 +8,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserKeyboardRaw{
+public class UserKeyboard {
     @JsonProperty("username")
 	private String username;
-	@JsonProperty("letter_status_list")
+	@JsonProperty("letterStatusList")
 	private List<LetterStatus> letterStatusList;
 }

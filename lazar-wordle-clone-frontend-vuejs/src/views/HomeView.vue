@@ -4,24 +4,25 @@
             <BoardComponent />
             <KeyboardComponent />
         </v-col>
-        <v-col @submitted.once.prevent>
-            <p>{{wordleStore.userTryResponse}}</p>
-        </v-col>
+        <v-text-field label="Username" hint="Enter Username" v-model="username"></v-text-field>
+        <v-btn @click="handleNewGame">New Game</v-btn>
     </main>
 </template>
 
 <script setup>
 import KeyboardComponent from '@/components/KeyboardComponent.vue';
 import BoardComponent from '@/components/BoardComponent.vue';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useWordleStore } from '@/stores/wordle.js';
 const wordleStore = useWordleStore();
 
 onMounted(() => {
+    //wordleStore.getCurrentBoard()
     wordleStore.newGame()
 })
-function updateUI(){
-    console.log('updatedUI');
+
+function handleNewGame(){
+    console.log('New Game');
 }
 
 </script>

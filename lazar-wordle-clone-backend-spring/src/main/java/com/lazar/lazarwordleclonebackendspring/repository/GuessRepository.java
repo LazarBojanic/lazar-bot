@@ -8,5 +8,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 @Repository
 public interface GuessRepository extends MongoRepository<Guess, Long>{
-	public Optional<Guess> findByWord(String word);
+	Optional<Guess> findByWord(String word);
 }

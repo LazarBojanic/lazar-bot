@@ -23,7 +23,7 @@ class Word {
             characterTile1,
             characterTile2,
             characterTile3,
-            characterTile4,
+            characterTile4
         ];
     }
     static emptyWord() {
@@ -51,6 +51,7 @@ export const useWordleStore = defineStore('wordle', () => {
     const currentCol = ref(0);
     const currentWord = ref(Word.emptyWord());
     const userTryResponse = ref({});
+    let currentBoard = ref({});
 
     const keyboard = ref([
         new CharacterTile(0, 'A', Color.WHITE),
@@ -112,7 +113,7 @@ export const useWordleStore = defineStore('wordle', () => {
                 username: username.value,
                 word: word,
             }
-            const res = await fetch(`${SERVER_IP}solutions/guess`, {
+            const res = await fetch(`${SERVER_IP}game/guess`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -121,20 +122,34 @@ export const useWordleStore = defineStore('wordle', () => {
             });
             const data = await res.json();
             userTryResponse.value = data;
-
-
-
-            currentRow.value++;
-            currentCol.value = 0;
-            currentWord.value = Word.emptyWord();
+            if(userTryResponse.value.solutionIsValid){
+                currentRow.value++;
+                currentCol.value = 0;
+                currentWord.value = Word.emptyWord();
+            }
+            else{
+                console.log('Invalid word');
+            }
         }
     }
     function updateBoard() {
 
     }
+    async function getCurrentBoard() {
+        console.log('Getting current board.');
+        const res = await fetch(`${SERVER_IP}game/get-board?username=${username.value}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await res.json();
+        currentBoard.value = data.userTryList;
+        console.log(currentBoard);
+    }
     async function newGame() {
         console.log('Starting new game.');
-        const res = await fetch(`${SERVER_IP}game/new?username=${username.value}`, {
+        const res = await fetch(`${SERVER_IP}game/new-game?username=${username.value}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -153,6 +168,8 @@ export const useWordleStore = defineStore('wordle', () => {
         keyBoardRows,
         username,
         userTryResponse,
+        getCurrentBoard,
+        updateBoard,
         addLetter,
         deleteLetter,
         submitWord,

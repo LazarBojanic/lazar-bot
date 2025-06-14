@@ -103,19 +103,17 @@ public class Util {
         try {
             String os = System.getProperty("os.name").toLowerCase();
             if (os.contains("windows")) {
-                // Try clearing using Windows command
                 new ProcessBuilder("cmd", "/c", "cls")
                         .inheritIO()
                         .start()
                         .waitFor();
-            } else {
-                // Try ANSI escape codes (Unix-like systems)
+            }
+            else {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
             }
         }
         catch (Exception e) {
-            // Fallback: print many new lines
             for (int i = 0; i < 100; i++) {
                 System.out.println();
             }
